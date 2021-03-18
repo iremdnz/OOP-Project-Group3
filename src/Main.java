@@ -3,7 +3,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("proje açýlýþ");
+		System.out.println("proje acilisi");
 		
 	}
 
