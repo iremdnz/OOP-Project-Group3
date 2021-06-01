@@ -8,9 +8,17 @@ public class Computer {
 	private HashMap<String, ArrayList<Object>> database;
 	private String usrPreference;
 	private ArrayList<Object> currentlyAdded;
+	private File caseFile, graphics_card, processor, memory, motherboard, storage;
 
-	public Computer(HashMap<String, ArrayList<Object>> database) throws FileNotFoundException {
-
+	public Computer() throws FileNotFoundException {
+		caseFile = new File("case.txt");
+		graphics_card = new File("graphics_card.txt");
+		processor = new File("processor.txt");
+		memory = new File("memory.txt");
+		motherboard = new File("motherboard.txt");
+		storage = new File("storage.txt");
+		
+		database = new HashMap<>();
 		database.put("case", readData(caseFile));
 		database.put("graphics_card", readData(graphics_card));
 		database.put("processor", readData(processor));
@@ -20,13 +28,10 @@ public class Computer {
 
 	}
 
-	File caseFile = new File("case.txt");
-	File graphics_card = new File("graphics_card.txt");
-	File processor = new File("processor.txt");
-	File memory = new File("memory.txt");
-	File motherboard = new File("motherboard.txt");
-	File storage = new File("storage.txt");
-
+	public HashMap<String, ArrayList<Object>> getDatabase() {
+		return database;
+	}
+	
 	private ArrayList<Object> readData(File file) throws FileNotFoundException {
 		ArrayList<Object> list = new ArrayList<Object>();
 		Scanner scan = new Scanner(file);
