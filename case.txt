@@ -9,8 +9,8 @@ Thermaltake,V200,600,1172
 Cooler Master,MasterBox MB520,650,1351
 Xigmatek,Gaming X,500,1002
 Cooler Master,MasterBox Lite 5,600,1225
-Raijintek,Silenos PRO 3,750,1.650
-Dark,Guardian PRO,750.1500
+Raijintek,Silenos PRO 3,750,1650
+Dark,Guardian PRO,750,1500
 ASUS,TUF GT301,650,1753
 ASUS,Rog Strix GX601,1000,6562
 

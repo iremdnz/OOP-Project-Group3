@@ -1,9 +1,17 @@
 
 public class Storage {
-	private String brand, model;
+	@Override
+	public String toString() {
+		return "Storage [type=" + type + ", brand=" + brand + ", model=" + model + ", capacity=" + capacity
+				+ ", readSpeed=" + readSpeed + ", writeSpeed=" + writeSpeed + ", price=" + price + "]";
+	}
+
+	private String type, brand, model;
 	private int capacity, readSpeed, writeSpeed, price;
-	
-	public Storage(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price) {
+
+	public Storage(String type, String brand, String model, int capacity, int readSpeed, int writeSpeed, int price) {
+		super();
+		this.type = type;
 		this.brand = brand;
 		this.model = model;
 		this.capacity = capacity;
@@ -14,6 +22,14 @@ public class Storage {
 
 	public String getBrand() {
 		return brand;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public void setBrand(String brand) {
@@ -59,5 +75,5 @@ public class Storage {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
 }

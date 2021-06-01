@@ -1,5 +1,12 @@
 
 public class Processor {
+	@Override
+	public String toString() {
+		return "Processor [brand=" + brand + ", model=" + model + ", core=" + core + ", thread=" + thread + ", socket="
+				+ socket + ", clockSpeed=" + clockSpeed + ", tdp=" + tdp + ", isUnlocked=" + isUnlocked + ", price="
+				+ price + "]";
+	}
+
 	private String brand;
 	private String model;
 	private int core;

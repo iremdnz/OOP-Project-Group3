@@ -1,5 +1,12 @@
 
 public class MotherBoard {
+	@Override
+	public String toString() {
+		return "MotherBoard [brand=" + brand + ", model=" + model + ", chipset=" + chipset + ", socket=" + socket
+				+ ", formFactor=" + formFactor + ", m2Support=" + m2Support + ", pcieVersion=" + pcieVersion
+				+ ", price=" + price + "]";
+	}
+
 	private String brand, model, chipset, socket, formFactor;
 	private boolean m2Support;
 	private double pcieVersion, price;

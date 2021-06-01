@@ -1,5 +1,11 @@
 
 public class GraphicsCard {
+	@Override
+	public String toString() {
+		return "GraphicsCard [brand=" + brand + ", model=" + model + ", vendor=" + vendor + ", capacity=" + capacity
+				+ ", price=" + price + "]";
+	}
+
 	private String brand, model, vendor;
 	private int capacity, price;
 	

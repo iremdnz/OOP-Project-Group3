@@ -1,5 +1,11 @@
 
 public class Memory {
+	@Override
+	public String toString() {
+		return "Memory [brand=" + brand + ", model=" + model + ", type=" + type + ", speed=" + speed + ", capacity="
+				+ capacity + ", latency=" + latency + ", price=" + price + "]";
+	}
+
 	private String brand, model, type;
 	private int speed, capacity, latency, price;
 	

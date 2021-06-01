@@ -45,4 +45,9 @@ public class Case {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "Case [brand=" + brand + ", model=" + model + ", psu=" + psu + ", price=" + price + "]";
+	}
+
 }
