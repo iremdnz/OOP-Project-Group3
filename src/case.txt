@@ -1,0 +1,21 @@
+Corsair,iCUE 4000X,750,1799
+Cooler Master,MasterBox TD500,750,1942
+Thermaltake,Versa T35,650,1318
+Corsair,Carbide Delta,650,1326
+Cooler Master,Mastercase H500,750,1909
+Thermaltake,Commander G33,750,1596
+Powerboost,VK-T01B,650,1147
+Thermaltake,V200,600,1172
+Cooler Master,MasterBox MB520,650,1351
+Xigmatek,Gaming X,500,1002
+Cooler Master,MasterBox Lite 5,600,1225
+Raijintek,Silenos PRO 3,750,1.650
+Dark,Guardian PRO,750.1500
+ASUS,TUF GT301,650,1753
+ASUS,Rog Strix GX601,1000,6562
+
+
+
+
+
+
