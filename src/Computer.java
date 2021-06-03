@@ -24,7 +24,7 @@ public class Computer {
 		database.put("processor", readData(processor));
 		database.put("memory", readData(memory));
 		database.put("motherboard", readData(motherboard));
-		// database.put("storage", readData(storage));
+		database.put("storage", readData(storage));
 
 	}
 
@@ -101,26 +101,33 @@ public class Computer {
 				list.add(processorUnit);
 			} else if (file.getName().equalsIgnoreCase("storage.txt")) {
 
-				String type = splitWord[0];
-				String brand = splitWord[1];
-				String model = splitWord[2];
-				int capacity = Integer.valueOf(splitWord[3]);
+				
+				String brand = splitWord[0];
+				String model = splitWord[1];
+				int capacity = Integer.valueOf(splitWord[2]);
 
 				int readSpeed = 0;
 				int writeSpeed = 0;
-				if (type.equalsIgnoreCase("ssd")) {
-					String[] splitted = splitWord[4].split("-");
+				
+				String type;
+				boolean hasCooling;
+				
+				if (splitWord.length == 7) {
+					String[] splitted = splitWord[3].split("-");
 					readSpeed = Integer.valueOf(splitted[0]);
 					writeSpeed = Integer.valueOf(splitted[1]);
-					int price = Integer.valueOf(splitWord[7]);
-					Storage storageUnit = new Storage(type, brand, model, capacity, readSpeed, writeSpeed, price);
+					type = splitWord[4];
+					hasCooling = Boolean.parseBoolean(splitWord[5]);
+					int price = Integer.valueOf(splitWord[6]);
+					SolidState storageUnit = new SolidState(brand, model, capacity, readSpeed, writeSpeed, price, type, hasCooling);
 					list.add(storageUnit);
 
 				} else {
-					readSpeed = Integer.valueOf(splitWord[4]);
-					writeSpeed = Integer.valueOf(splitWord[4]);
-					int price = Integer.valueOf(splitWord[5]);
-					Storage storageUnit = new Storage(type, brand, model, capacity, readSpeed, writeSpeed, price);
+					readSpeed = 150;
+					writeSpeed = 150;
+					int spin = Integer.valueOf(splitWord[3]);
+					int price = Integer.valueOf(splitWord[4]);
+					HardDrive storageUnit = new HardDrive(brand, model, capacity, readSpeed, writeSpeed, price, spin);
 					list.add(storageUnit);
 				}
 
