@@ -154,14 +154,25 @@ public class WelcomeScreen extends JFrame {
 					}
 				}
 				
-				if (!userName.equals("") && !adminRadioButton.isSelected()) {
+				if (!userName.equals("") && userRadioButton.isSelected()) {
+					User mainUser = new User(userName);
 					String message = "Username: " + userName;
 					JOptionPane.showMessageDialog(contentPane, message, "Login Info", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
-				if (!userName.equals("") && !password.equals("")) {
-					String message = "Username: " + userName + "\nPassword: " + password;
-					JOptionPane.showMessageDialog(contentPane, message, "Login Info", JOptionPane.INFORMATION_MESSAGE);
+				if (!userName.equals("") && !password.equals("") && adminRadioButton.isSelected()) {
+					if(!userName.equals(User.adminName) || !password.equals(User.adminPassword)) {
+						JOptionPane.showMessageDialog(contentPane, "Please enter your inputs correctly" , "Warning", JOptionPane.WARNING_MESSAGE);
+					}
+					else {
+						User.userType = "admin";
+						String message = "Username: " + userName + "\nPassword: " + password;
+						JOptionPane.showMessageDialog(contentPane, message, "Login Info", JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+				}
+				if(!userRadioButton.isSelected() && !adminRadioButton.isSelected()) {
+					JOptionPane.showMessageDialog(contentPane, "Please select your user type!" , "Warning", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});

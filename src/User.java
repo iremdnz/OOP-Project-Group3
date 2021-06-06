@@ -1,31 +1,19 @@
 
 public class User {
 	
-	private String userType,adminPassword;
+	private String userName;
+	public static String userType = "user" , adminName = "admin" ,adminPassword = "asdf123";
 
-	public User(String userType, String adminPassword) {
-		this.userType = userType;
-		this.adminPassword = adminPassword;
+	public User(String userName) {
+		this.userName= userName;
 	}
 	
-	public User(String userType) {
-		this.userType = userType;
+	public String getUserName() {
+		return userName;
 	}
 
-	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-
-	public String getAdminPassword() {
-		return adminPassword;
-	}
-
-	public void setAdminPassword(String adminPassword) {
-		this.adminPassword = adminPassword;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	
 }

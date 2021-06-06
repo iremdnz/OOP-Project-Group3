@@ -2,9 +2,7 @@
 public class Processor {
 	@Override
 	public String toString() {
-		return "Processor [brand=" + brand + ", model=" + model + ", core=" + core + ", thread=" + thread + ", socket="
-				+ socket + ", clockSpeed=" + clockSpeed + ", tdp=" + tdp + ", isUnlocked=" + isUnlocked + ", price="
-				+ price + "]";
+		return brand + " " + model + " " + clockSpeed + "GHz";
 	}
 
 	private String brand;
