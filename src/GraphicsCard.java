@@ -2,13 +2,12 @@
 public class GraphicsCard {
 	@Override
 	public String toString() {
-		return "GraphicsCard [brand=" + brand + ", model=" + model + ", vendor=" + vendor + ", capacity=" + capacity
-				+ ", price=" + price + "]";
+		return "" + brand + " " + model + " " + vendor + " " + capacity + " GB";
 	}
 
 	private String brand, model, vendor;
 	private int capacity, price;
-	
+
 	public GraphicsCard(String brand, String model, String vendor, int capacity, int price) {
 		this.brand = brand;
 		this.model = model;
@@ -56,5 +55,5 @@ public class GraphicsCard {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-		
+
 }

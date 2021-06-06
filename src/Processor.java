@@ -2,7 +2,7 @@
 public class Processor {
 	@Override
 	public String toString() {
-		return brand + " " + model + " " + clockSpeed + "GHz";
+		return brand + " " + model + " " + clockSpeed + " GHz";
 	}
 
 	private String brand;

@@ -2,13 +2,12 @@
 public class Memory {
 	@Override
 	public String toString() {
-		return "Memory [brand=" + brand + ", model=" + model + ", type=" + type + ", speed=" + speed + ", capacity="
-				+ capacity + ", latency=" + latency + ", price=" + price + "]";
+		return brand + " " + model + " " + capacity + " GB " + speed + " Mhz" + " CL" + latency;
 	}
 
 	private String brand, model, type;
 	private int speed, capacity, latency, price;
-	
+
 	public Memory(String brand, String model, int speed, int capacity, String type, int latency, int price) {
 		this.brand = brand;
 		this.model = model;
@@ -74,5 +73,5 @@ public class Memory {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
 }

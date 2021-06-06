@@ -3,6 +3,12 @@ public class Storage {
 
 	private String brand, model;
 	private int capacity, readSpeed, writeSpeed, price;
+	
+	@Override
+	public String toString() {
+		return "" + getBrand() + " "+ getModel() +" " +  getCapacity()  +" GB";
+	}
+
 
 	public Storage(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price) {
 		this.brand = brand;

@@ -4,6 +4,14 @@ public class Case {
 	private String model;
 	private int psu;
 	private int price;
+	
+	
+	@Override
+	public String toString() {
+		return  brand + " " + model + " " + psu + " Watt";
+	}
+
+	
 
 	public Case(String brand, String model, int psu, int price) {
 		super();
@@ -45,9 +53,5 @@ public class Case {
 		this.price = price;
 	}
 
-	@Override
-	public String toString() {
-		return "Case [brand=" + brand + ", model=" + model + ", psu=" + psu + ", price=" + price + "]";
-	}
-
+	
 }

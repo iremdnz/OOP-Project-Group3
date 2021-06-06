@@ -2,16 +2,15 @@
 public class MotherBoard {
 	@Override
 	public String toString() {
-		return "MotherBoard [brand=" + brand + ", model=" + model + ", chipset=" + chipset + ", socket=" + socket
-				+ ", formFactor=" + formFactor + ", m2Support=" + m2Support + ", pcieVersion=" + pcieVersion
-				+ ", price=" + price + "]";
+		return brand + " " + model + " " + chipset + " " + socket;
 	}
 
 	private String brand, model, chipset, socket, formFactor;
 	private boolean m2Support;
 	private double pcieVersion, price;
-	
-	public MotherBoard(String brand, String model, String chipset, String socket, String formFactor, boolean m2Support, double pcieVersion, double price) {
+
+	public MotherBoard(String brand, String model, String chipset, String socket, String formFactor, boolean m2Support,
+			double pcieVersion, double price) {
 		this.brand = brand;
 		this.model = model;
 		this.chipset = chipset;
@@ -85,5 +84,5 @@ public class MotherBoard {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 }
