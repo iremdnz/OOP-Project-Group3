@@ -7,10 +7,11 @@ public class MotherBoard {
 
 	private String brand, model, chipset, socket, formFactor;
 	private boolean m2Support;
-	private double pcieVersion, price;
+	private double pcieVersion;
+	private int price;
 
 	public MotherBoard(String brand, String model, String chipset, String socket, String formFactor, boolean m2Support,
-			double pcieVersion, double price) {
+			double pcieVersion, int price) {
 		this.brand = brand;
 		this.model = model;
 		this.chipset = chipset;
@@ -77,11 +78,11 @@ public class MotherBoard {
 		this.pcieVersion = pcieVersion;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 

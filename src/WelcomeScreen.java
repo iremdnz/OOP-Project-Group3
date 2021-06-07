@@ -156,8 +156,12 @@ public class WelcomeScreen extends JFrame {
 				
 				if (!userName.equals("") && userRadioButton.isSelected()) {
 					User mainUser = new User(userName);
-					String message = "Username: " + userName;
+					String message = "Login successfull! Let's start, " + mainUser.getUserName() + ".";
 					JOptionPane.showMessageDialog(contentPane, message, "Login Info", JOptionPane.INFORMATION_MESSAGE);
+					
+					dispose();
+					ComputerConfSelect configure = new ComputerConfSelect();
+					configure.setVisible(true);
 				}
 				
 				if (!userName.equals("") && !password.equals("") && adminRadioButton.isSelected()) {
