@@ -45,12 +45,12 @@ public class ComponentSelection extends JFrame {
 
 	/**
 	 * Create the frame.
-	 *  
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public ComponentSelection() {
 		computer = new Computer();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 450);
 		contentPane = new JPanel();
@@ -61,13 +61,7 @@ public class ComponentSelection extends JFrame {
 
 		@SuppressWarnings("unchecked")
 		JComboBox dropList1 = new JComboBox(computer.getDatabase().get("processor").toArray());
-		dropList1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String deneme = dropList1.getSelectedItem().toString();
-				System.out.println(deneme);
-			}
-		});
+
 		dropList1.setSelectedIndex(-1);
 		dropList1.setBounds(134, 45, 225, 21);
 		contentPane.add(dropList1);
@@ -84,7 +78,6 @@ public class ComponentSelection extends JFrame {
 
 		contentPane.add(dropList3);
 
-
 		@SuppressWarnings("unchecked")
 		JComboBox dropList4 = new JComboBox();
 		dropList4.setBounds(134, 195, 225, 21);
@@ -99,11 +92,9 @@ public class ComponentSelection extends JFrame {
 				dropList3.addItem(storageElement);
 			}
 		}
-		
+
 		dropList3.setSelectedIndex(-1);
 		dropList4.setSelectedIndex(-1);
-		
-
 
 		@SuppressWarnings("unchecked")
 		JComboBox dropList5 = new JComboBox(computer.getDatabase().get("memory").toArray());
@@ -157,12 +148,12 @@ public class ComponentSelection extends JFrame {
 		caseLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		caseLabel.setBounds(20, 345, 93, 21);
 		contentPane.add(caseLabel);
-		
+
 		JLabel compIcon = new JLabel("COMPONENT ICON");
 		compIcon.setHorizontalAlignment(SwingConstants.CENTER);
 		compIcon.setBounds(442, 45, 135, 135);
 		contentPane.add(compIcon);
-		
+
 		JTextArea compInformation = new JTextArea();
 		compInformation.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		compInformation.setBackground(Color.WHITE);
@@ -170,122 +161,103 @@ public class ComponentSelection extends JFrame {
 		compInformation.setVisible(false);
 		compInformation.setBounds(371, 196, 304, 170);
 		contentPane.add(compInformation);
-		
+
 		dropList1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
-				
+
 				Processor cpu = (Processor) dropList1.getSelectedItem();
 				String isUnlocked = cpu.isUnlocked() ? "Yes" : "No";
 				String socket = cpu.getBrand().equals("AMD") ? cpu.getSocket() : "LGA" + cpu.getSocket();
-				String information = "Brand: " + cpu.getBrand()
-				+"\nModel: " + cpu.getModel()
-				+"\nCores/Threads: " + cpu.getCore() + "/" + cpu.getThread()
-				+"\nSocket Type: " + socket
-				+"\nClock Speed: " + cpu.getClockSpeed() + " GHz"
-				+"\nTDP: " + cpu.getTdp() + " Watt"
-				+"\nUnlocked: " + isUnlocked
-				+"\nPrice (Avg.): " + cpu.getPrice() + " TL";
+				String information = "Brand: " + cpu.getBrand() + "\nModel: " + cpu.getModel() + "\nCores/Threads: "
+						+ cpu.getCore() + "/" + cpu.getThread() + "\nSocket Type: " + socket + "\nClock Speed: "
+						+ cpu.getClockSpeed() + " GHz" + "\nTDP: " + cpu.getTdp() + " Watt" + "\nUnlocked: "
+						+ isUnlocked + "\nPrice (Avg.): " + cpu.getPrice() + " TL";
 				compInformation.setText(information);
 			}
 		});
-		
+
 		dropList2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
-				
+
 				MotherBoard mb = (MotherBoard) dropList2.getSelectedItem();
 				String m2Support = mb.isM2Support() ? "Supported" : "Not Supported";
-				String information = "Brand: " + mb.getBrand()
-				+"\nModel: " + mb.getModel()
-				+"\nChipset: " + mb.getChipset()
-				+"\nSocket: " + mb.getSocket()
-				+"\nForm Factor: " + mb.getFormFactor()
-				+"\nM.2 SSD Support: " + m2Support
-				+"\nPCIe Standart: " + mb.getPcieVersion()
-				+"\nPrice (Avg.): " + mb.getPrice() + " TL";
+				String information = "Brand: " + mb.getBrand() + "\nModel: " + mb.getModel() + "\nChipset: "
+						+ mb.getChipset() + "\nSocket: " + mb.getSocket() + "\nForm Factor: " + mb.getFormFactor()
+						+ "\nM.2 SSD Support: " + m2Support + "\nPCIe Standart: " + mb.getPcieVersion()
+						+ "\nPrice (Avg.): " + mb.getPrice() + " TL";
 				compInformation.setText(information);
 			}
 		});
-		
-		dropList3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-            	compInformation.setVisible(true);
-               
-                HardDrive disk = (HardDrive) dropList3.getSelectedItem();
-                String capacity = disk.getCapacity() >= 1000 ? (disk.getCapacity()/1000)+" TB" : disk.getCapacity()+" GB";
-            	String information = "Brand: " + disk.getBrand()
-				+"\nModel: " + disk.getModel()
-				+"\nCapacity: " + capacity
-				+"\nR/W Speeds: " + disk.getReadSpeed() + "/" + disk.getWriteSpeed() + " MB/s"
-				+"\nSpin: " + disk.getSpin()
-				+"\nPrice (Avg.): " + disk.getPrice() + " TL";
 
-            	compInformation.setText(information);
-            }
-        });
-		
+		dropList3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				compInformation.setVisible(true);
+
+				HardDrive disk = (HardDrive) dropList3.getSelectedItem();
+				String capacity = disk.getCapacity() >= 1000 ? (disk.getCapacity() / 1000) + " TB"
+						: disk.getCapacity() + " GB";
+				String information = "Brand: " + disk.getBrand() + "\nModel: " + disk.getModel() + "\nCapacity: "
+						+ capacity + "\nR/W Speeds: " + disk.getReadSpeed() + "/" + disk.getWriteSpeed() + " MB/s"
+						+ "\nSpin: " + disk.getSpin() + "\nPrice (Avg.): " + disk.getPrice() + " TL";
+
+				compInformation.setText(information);
+			}
+		});
+
 		dropList4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
-				
-            	SolidState disk = (SolidState) dropList4.getSelectedItem();
-            	String coolingSys = disk.isHasCoolingSys() ? "Included" : "Not Included";
-            	String capacity = disk.getCapacity() >= 1000 ? (disk.getCapacity()/1000)+" TB" : disk.getCapacity()+" GB";
-            	String information = "Brand: " + disk.getBrand()
-				+"\nModel: " + disk.getModel()
-				+"\nCapacity: " + capacity
-				+"\nR/W Speeds: " + disk.getReadSpeed() + "/" + disk.getWriteSpeed() + " MB/s"
-				+"\nType: " + disk.getType()
-				+"\nCooling System: " + coolingSys
-				+"\nPrice (Avg.): " + disk.getPrice() + "TL";
-            	
-            	compInformation.setText(information);
+
+				SolidState disk = (SolidState) dropList4.getSelectedItem();
+				String coolingSys = disk.isHasCoolingSys() ? "Included" : "Not Included";
+				String capacity = disk.getCapacity() >= 1000 ? (disk.getCapacity() / 1000) + " TB"
+						: disk.getCapacity() + " GB";
+				String information = "Brand: " + disk.getBrand() + "\nModel: " + disk.getModel() + "\nCapacity: "
+						+ capacity + "\nR/W Speeds: " + disk.getReadSpeed() + "/" + disk.getWriteSpeed() + " MB/s"
+						+ "\nType: " + disk.getType() + "\nCooling System: " + coolingSys + "\nPrice (Avg.): "
+						+ disk.getPrice() + "TL";
+
+				compInformation.setText(information);
 			}
 		});
-		
+
 		dropList5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
-				
+
 				Memory memory = (Memory) dropList5.getSelectedItem();
-				String capacity = memory.getType().contains("DualKit") ? (memory.getCapacity()/2)+"x2 GB" : 
-								  memory.getType().contains("QuadKit") ? (memory.getCapacity()/4)+"x4 GB" :
-								  memory.getCapacity() + " GB";
-				String information = "Brand: " + memory.getBrand()
-				+"\nModel: " + memory.getModel()
-				+"\nSpeed: " + memory.getSpeed() + " MHz"
-				+"\nCapacity: " + capacity
-				+"\nType: " + memory.getType()
-				+"\nLatency: CL" + memory.getLatency()
-				+"\nPrice (Avg.): " + memory.getPrice() + " TL";
+				String capacity = memory.getType().contains("DualKit") ? (memory.getCapacity() / 2) + "x2 GB"
+						: memory.getType().contains("QuadKit") ? (memory.getCapacity() / 4) + "x4 GB"
+								: memory.getCapacity() + " GB";
+				String information = "Brand: " + memory.getBrand() + "\nModel: " + memory.getModel() + "\nSpeed: "
+						+ memory.getSpeed() + " MHz" + "\nCapacity: " + capacity + "\nType: " + memory.getType()
+						+ "\nLatency: CL" + memory.getLatency() + "\nPrice (Avg.): " + memory.getPrice() + " TL";
 				compInformation.setText(information);
 			}
 		});
-		
+
 		dropList6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
-				
+
 				GraphicsCard gpu = (GraphicsCard) dropList6.getSelectedItem();
-				String information = "Brand: " + gpu.getBrand()
-				+"\nVendor: " + gpu.getVendor()
-				+"\nModel: " + gpu.getModel()
-				+"\nVRAM Capacity: " + gpu.getCapacity() + " GB"
-				+"\nPrice (Avg.): " + gpu.getPrice() + " TL";
+				String information = "Brand: " + gpu.getBrand() + "\nVendor: " + gpu.getVendor() + "\nModel: "
+						+ gpu.getModel() + "\nVRAM Capacity: " + gpu.getCapacity() + " GB" + "\nPrice (Avg.): "
+						+ gpu.getPrice() + " TL";
 				compInformation.setText(information);
 			}
 		});
-		
+
 		dropList7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
-				
+
 				Case compCase = (Case) dropList7.getSelectedItem();
-				String information = "Brand: " + compCase.getBrand()
-				+"\nModel: " + compCase.getModel()
-				+"\nPSU Unit: " + compCase.getPsu() + " Watt"
-				+"\nPrice (Avg.): " + compCase.getPrice() + " TL";
+				String information = "Brand: " + compCase.getBrand() + "\nModel: " + compCase.getModel()
+						+ "\nPSU Unit: " + compCase.getPsu() + " Watt" + "\nPrice (Avg.): " + compCase.getPrice()
+						+ " TL";
 				compInformation.setText(information);
 			}
 		});
