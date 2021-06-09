@@ -4,12 +4,11 @@ public class Storage {
 	private String brand, model;
 	private int capacity, readSpeed, writeSpeed, price;
 	private char usage;
-	
+
 	@Override
 	public String toString() {
-		return "" + getBrand() + " "+ getModel() +" " +  getCapacity()  +" GB";
+		return "" + getBrand() + " " + getModel() + " " + getCapacity() + " GB";
 	}
-
 
 	public Storage(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price, char usage) {
 		this.brand = brand;
@@ -19,17 +18,16 @@ public class Storage {
 		this.writeSpeed = writeSpeed;
 		this.price = price;
 		this.usage = usage;
+
 	}
 
 	public char getUsage() {
 		return usage;
 	}
 
-
 	public void setUsage(char usage) {
 		this.usage = usage;
 	}
-
 
 	public String getBrand() {
 		return brand;

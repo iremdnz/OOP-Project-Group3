@@ -41,7 +41,7 @@ public class ComponentSelection extends JFrame {
 				try {
 					ComponentSelection frame = new ComponentSelection();
 					frame.setVisible(true);
-				} catch (Exception e) {
+ 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -57,7 +57,7 @@ public class ComponentSelection extends JFrame {
 		computer = new Computer();
 		userChoices = new Stack<>();
 		tempChoices = new Stack<>();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 450);
 		contentPane = new JPanel();
@@ -161,7 +161,7 @@ public class ComponentSelection extends JFrame {
 		compIcon.setBounds(442, 24, 135, 135);
 		contentPane.add(compIcon);
 
-		Color customColor = new Color(238,238,238);
+		Color customColor = new Color(238, 238, 238);
 		JTextArea compInformation = new JTextArea();
 		compInformation.setBackground(customColor);
 		compInformation.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
@@ -169,38 +169,34 @@ public class ComponentSelection extends JFrame {
 		compInformation.setVisible(false);
 		compInformation.setBounds(371, 174, 304, 170);
 		contentPane.add(compInformation);
-		
+
 		dropList1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				compInformation.setVisible(true);
 
 				Processor cpu = (Processor) dropList1.getSelectedItem();
-				
-				while(!userChoices.isEmpty()) {
+
+				while (!userChoices.isEmpty()) {
 					tempChoices.push(userChoices.pop());
 				}
-				
-				if(!tempChoices.isEmpty()) {
+
+				if (!tempChoices.isEmpty()) {
 					tempChoices.pop();
 				}
-			
+
 				userChoices.push(cpu);
-				
-				while(!tempChoices.isEmpty()) {
+
+				while (!tempChoices.isEmpty()) {
 					userChoices.push(tempChoices.pop());
 				}
-				
-				/*while(!userChoices.isEmpty()) {
-					tempChoices.push(userChoices.pop());
-				}
-				
-				while(!tempChoices.isEmpty()) {
-					Object temp = tempChoices.pop();
-					System.out.println(temp);
-					userChoices.push(temp);
-				}
-				System.out.println();*/
-				
+
+				/*
+				 * while(!userChoices.isEmpty()) { tempChoices.push(userChoices.pop()); }
+				 * 
+				 * while(!tempChoices.isEmpty()) { Object temp = tempChoices.pop();
+				 * System.out.println(temp); userChoices.push(temp); } System.out.println();
+				 */
+
 				String isUnlocked = cpu.isUnlocked() ? "Yes" : "No";
 				String socket = cpu.getBrand().equals("AMD") ? cpu.getSocket() : "LGA" + cpu.getSocket();
 				String information = "Brand: " + cpu.getBrand() + "\nModel: " + cpu.getModel() + "\nCores/Threads: "
@@ -216,28 +212,29 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				MotherBoard mb = (MotherBoard) dropList2.getSelectedItem();
-				
-				if(userChoices.size() < 1) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+				if (userChoices.size() < 1) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 					dropList2.setSelectedIndex(-1);
 					compInformation.setVisible(false);
 				}
-				
+
 				else {
-					while(userChoices.size() != 1) {
+					while (userChoices.size() != 1) {
 						tempChoices.push(userChoices.pop());
 					}
-					
-					if(!tempChoices.isEmpty()) {
+
+					if (!tempChoices.isEmpty()) {
 						tempChoices.pop();
 					}
-				
+
 					userChoices.push(mb);
-					
-					while(!tempChoices.isEmpty()) {
+
+					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
-					
+
 					String m2Support = mb.isM2Support() ? "Supported" : "Not Supported";
 					String information = "Brand: " + mb.getBrand() + "\nModel: " + mb.getModel() + "\nChipset: "
 							+ mb.getChipset() + "\nSocket: " + mb.getSocket() + "\nForm Factor: " + mb.getFormFactor()
@@ -253,28 +250,29 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				HardDrive disk = (HardDrive) dropList3.getSelectedItem();
-				
-				if(userChoices.size() < 2) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+				if (userChoices.size() < 2) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 					dropList3.setSelectedIndex(-1);
 					compInformation.setVisible(false);
 				}
-				
+
 				else {
-					while(userChoices.size() != 2) {
+					while (userChoices.size() != 2) {
 						tempChoices.push(userChoices.pop());
 					}
-					
-					if(!tempChoices.isEmpty()) {
+
+					if (!tempChoices.isEmpty()) {
 						tempChoices.pop();
 					}
-				
+
 					userChoices.push(disk);
-					
-					while(!tempChoices.isEmpty()) {
+
+					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
-					
+
 					String capacity = disk.getCapacity() >= 1000 ? (disk.getCapacity() / 1000) + " TB"
 							: disk.getCapacity() + " GB";
 					String information = "Brand: " + disk.getBrand() + "\nModel: " + disk.getModel() + "\nCapacity: "
@@ -291,28 +289,29 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				SolidState disk = (SolidState) dropList4.getSelectedItem();
-				
-				if(userChoices.size() < 3) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+				if (userChoices.size() < 3) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 					dropList4.setSelectedIndex(-1);
 					compInformation.setVisible(false);
 				}
-				
+
 				else {
-					while(userChoices.size() != 3) {
+					while (userChoices.size() != 3) {
 						tempChoices.push(userChoices.pop());
 					}
-					
-					if(!tempChoices.isEmpty()) {
+
+					if (!tempChoices.isEmpty()) {
 						tempChoices.pop();
 					}
-				
+
 					userChoices.push(disk);
-					
-					while(!tempChoices.isEmpty()) {
+
+					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
-					
+
 					String coolingSys = disk.isHasCoolingSys() ? "Included" : "Not Included";
 					String capacity = disk.getCapacity() >= 1000 ? (disk.getCapacity() / 1000) + " TB"
 							: disk.getCapacity() + " GB";
@@ -331,27 +330,27 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				Memory memory = (Memory) dropList5.getSelectedItem();
-				
-				if(userChoices.size() < 4) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+				if (userChoices.size() < 4) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 					dropList5.setSelectedIndex(-1);
 					compInformation.setVisible(false);
-				}
-				else {
-					while(userChoices.size() != 4) {
+				} else {
+					while (userChoices.size() != 4) {
 						tempChoices.push(userChoices.pop());
 					}
-					
-					if(!tempChoices.isEmpty()) {
+
+					if (!tempChoices.isEmpty()) {
 						tempChoices.pop();
 					}
-				
+
 					userChoices.push(memory);
-					
-					while(!tempChoices.isEmpty()) {
+
+					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
-					
+
 					String capacity = memory.getType().contains("DualKit") ? (memory.getCapacity() / 2) + "x2 GB"
 							: memory.getType().contains("QuadKit") ? (memory.getCapacity() / 4) + "x4 GB"
 									: memory.getCapacity() + " GB";
@@ -368,28 +367,29 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				GraphicsCard gpu = (GraphicsCard) dropList6.getSelectedItem();
-				
-				if(userChoices.size() < 5) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+				if (userChoices.size() < 5) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 					dropList6.setSelectedIndex(-1);
 					compInformation.setVisible(false);
 				}
-				
+
 				else {
-					while(userChoices.size() != 5) {
+					while (userChoices.size() != 5) {
 						tempChoices.push(userChoices.pop());
 					}
-					
-					if(!tempChoices.isEmpty()) {
+
+					if (!tempChoices.isEmpty()) {
 						tempChoices.pop();
 					}
-				
+
 					userChoices.push(gpu);
-					
-					while(!tempChoices.isEmpty()) {
+
+					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
-				
+
 					String information = "Brand: " + gpu.getBrand() + "\nVendor: " + gpu.getVendor() + "\nModel: "
 							+ gpu.getModel() + "\nVRAM Capacity: " + gpu.getCapacity() + " GB" + "\nPrice (Avg.): "
 							+ gpu.getPrice() + " TL";
@@ -403,28 +403,29 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				Case compCase = (Case) dropList7.getSelectedItem();
-				
-				if(userChoices.size() < 6) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
+
+				if (userChoices.size() < 6) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
 					dropList7.setSelectedIndex(-1);
 					compInformation.setVisible(false);
 				}
-				
+
 				else {
-					while(userChoices.size() != 6) {
+					while (userChoices.size() != 6) {
 						tempChoices.push(userChoices.pop());
 					}
-					
-					if(!tempChoices.isEmpty()) {
+
+					if (!tempChoices.isEmpty()) {
 						tempChoices.pop();
 					}
-				
+
 					userChoices.push(compCase);
-					
-					while(!tempChoices.isEmpty()) {
+
+					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
-					
+
 					String information = "Brand: " + compCase.getBrand() + "\nModel: " + compCase.getModel()
 							+ "\nPSU Unit: " + compCase.getPsu() + " Watt" + "\nPrice (Avg.): " + compCase.getPrice()
 							+ " TL";
@@ -432,15 +433,15 @@ public class ComponentSelection extends JFrame {
 				}
 			}
 		});
-		
+
 		JButton nextButton = new JButton("Next");
 		nextButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(userChoices.size() != 7) {
-					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!" , "Warning", JOptionPane.WARNING_MESSAGE);
-				}
-				else {
+				if (userChoices.size() != 7) {
+					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
+				} else {
 					UserEndPage end = new UserEndPage();
 					end.setVisible(true);
 				}

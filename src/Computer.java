@@ -17,7 +17,7 @@ public class Computer {
 		memory = new File("memory.txt");
 		motherboard = new File("motherboard.txt");
 		storage = new File("storage.txt");
-		
+
 		database = new HashMap<>();
 		database.put("case", readData(caseFile));
 		database.put("graphics_card", readData(graphics_card));
@@ -31,7 +31,7 @@ public class Computer {
 	public HashMap<String, ArrayList<Object>> getDatabase() {
 		return database;
 	}
-	
+
 	private ArrayList<Object> readData(File file) {
 		ArrayList<Object> list = new ArrayList<Object>();
 
@@ -103,22 +103,21 @@ public class Computer {
 					int price = Integer.valueOf(splitWord[8]);
 					char usage = splitWord[9].charAt(0);
 
-					Processor processorUnit = new Processor(brand, model, core, thread, socket, clockSpeed, tdp, isUnlocked,
-							price, usage);
+					Processor processorUnit = new Processor(brand, model, core, thread, socket, clockSpeed, tdp,
+							isUnlocked, price, usage);
 					list.add(processorUnit);
 				} else if (file.getName().equalsIgnoreCase("storage.txt")) {
 
-					
 					String brand = splitWord[0];
 					String model = splitWord[1];
 					int capacity = Integer.valueOf(splitWord[2]);
 
 					int readSpeed = 0;
 					int writeSpeed = 0;
-					
+
 					String type;
 					boolean hasCooling;
-					
+
 					if (splitWord.length == 8) {
 						String[] splitted = splitWord[3].split("-");
 						readSpeed = Integer.valueOf(splitted[0]);
@@ -127,7 +126,8 @@ public class Computer {
 						hasCooling = Boolean.parseBoolean(splitWord[5]);
 						int price = Integer.valueOf(splitWord[6]);
 						char usage = splitWord[7].charAt(0);
-						SolidState storageUnit = new SolidState(brand, model, capacity, readSpeed, writeSpeed, price, usage, type, hasCooling);
+						SolidState storageUnit = new SolidState(brand, model, capacity, readSpeed, writeSpeed, price,
+								usage, type, hasCooling);
 						list.add(storageUnit);
 
 					} else {
@@ -136,15 +136,15 @@ public class Computer {
 						int spin = Integer.valueOf(splitWord[3]);
 						int price = Integer.valueOf(splitWord[4]);
 						char usage = splitWord[5].charAt(0);
-						HardDrive storageUnit = new HardDrive(brand, model, capacity, readSpeed, writeSpeed, price, usage, spin);
+						HardDrive storageUnit = new HardDrive(brand, model, capacity, readSpeed, writeSpeed, price,
+								usage, spin);
 						list.add(storageUnit);
 					}
 
 				}
 
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.err.println("Error! Given file was not found to be opened.");
 			e.printStackTrace();
 		}
