@@ -7,8 +7,9 @@ public class Memory {
 
 	private String brand, model, type;
 	private int speed, capacity, latency, price;
+	private char usage;
 
-	public Memory(String brand, String model, int speed, int capacity, String type, int latency, int price) {
+	public Memory(String brand, String model, int speed, int capacity, String type, int latency, int price, char usage) {
 		this.brand = brand;
 		this.model = model;
 		this.speed = speed;
@@ -16,6 +17,15 @@ public class Memory {
 		this.type = type;
 		this.latency = latency;
 		this.price = price;
+		this.usage = usage;
+	}
+
+	public char getUsage() {
+		return usage;
+	}
+
+	public void setUsage(char usage) {
+		this.usage = usage;
 	}
 
 	public String getBrand() {

@@ -8,8 +8,8 @@ public class HardDrive extends Storage {
 
 	private int spin;
 
-	public HardDrive(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price, int spin) {
-		super(brand, model, capacity, readSpeed, writeSpeed, price);
+	public HardDrive(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price, char usage, int spin) {
+		super(brand, model, capacity, readSpeed, writeSpeed, price, usage);
 		this.spin = spin;
 	}
 

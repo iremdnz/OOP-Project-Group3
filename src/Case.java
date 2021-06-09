@@ -4,7 +4,7 @@ public class Case {
 	private String model;
 	private int psu;
 	private int price;
-	
+	private char usage;
 	
 	@Override
 	public String toString() {
@@ -13,12 +13,21 @@ public class Case {
 
 	
 
-	public Case(String brand, String model, int psu, int price) {
+	public Case(String brand, String model, int psu, int price, char usage) {
 		super();
 		this.brand = brand;
 		this.model = model;
 		this.psu = psu;
 		this.price = price;
+		this.usage = usage;
+	}
+
+	public char getUsage() {
+		return usage;
+	}
+
+	public void setUsage(char usage) {
+		this.usage = usage;
 	}
 
 	public String getBrand() {

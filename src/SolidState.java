@@ -10,9 +10,9 @@ public class SolidState extends Storage {
 	private String type;
 	private boolean hasCoolingSys;
 
-	public SolidState(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price, String type,
+	public SolidState(String brand, String model, int capacity, int readSpeed, int writeSpeed, int price, char usage, String type,
 			boolean hasCoolingSys) {
-		super(brand, model, capacity, readSpeed, writeSpeed, price);
+		super(brand, model, capacity, readSpeed, writeSpeed, price, usage);
 		this.type = type;
 		this.hasCoolingSys = hasCoolingSys;
 	}

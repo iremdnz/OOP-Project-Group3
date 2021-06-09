@@ -14,10 +14,10 @@ public class Processor {
 	private int tdp;
 	private boolean isUnlocked;
 	private int price;
+	private char usage;
 
 	public Processor(String brand, String model, int core, int thread, String socket, double clockSpeed, int tdp,
-			boolean isUnlocked, int price) {
-		super();
+			boolean isUnlocked, int price, char usage) {
 		this.brand = brand;
 		this.model = model;
 		this.core = core;
@@ -27,6 +27,15 @@ public class Processor {
 		this.tdp = tdp;
 		this.isUnlocked = isUnlocked;
 		this.price = price;
+		this.usage = usage;
+	}
+
+	public char getUsage() {
+		return usage;
+	}
+
+	public void setUsage(char usage) {
+		this.usage = usage;
 	}
 
 	public String getBrand() {

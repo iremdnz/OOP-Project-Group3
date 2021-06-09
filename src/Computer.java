@@ -45,8 +45,9 @@ public class Computer {
 					String model = splitWord[1];
 					int psu = Integer.valueOf(splitWord[2]);
 					int price = Integer.valueOf(splitWord[3]);
+					char usage = splitWord[4].charAt(0);
 
-					Case caseUnit = new Case(brand, model, psu, price);
+					Case caseUnit = new Case(brand, model, psu, price, usage);
 					list.add(caseUnit);
 				} else if (file.getName().equalsIgnoreCase("graphics_card.txt")) {
 
@@ -55,7 +56,8 @@ public class Computer {
 					String vendor = splitWord[2];
 					int capacity = Integer.valueOf(splitWord[3]);
 					int price = Integer.valueOf(splitWord[4]);
-					GraphicsCard gpuUnit = new GraphicsCard(brand, model, vendor, capacity, price);
+					char usage = splitWord[5].charAt(0);
+					GraphicsCard gpuUnit = new GraphicsCard(brand, model, vendor, capacity, price, usage);
 					list.add(gpuUnit);
 				} else if (file.getName().equalsIgnoreCase("memory.txt")) {
 					String brand = splitWord[0];
@@ -65,8 +67,9 @@ public class Computer {
 					String type = splitWord[4];
 					int latency = Integer.valueOf(splitWord[5]);
 					int price = Integer.valueOf(splitWord[6]);
+					char usage = splitWord[7].charAt(0);
 
-					Memory memoryUnit = new Memory(brand, model, speed, capacity, type, latency, price);
+					Memory memoryUnit = new Memory(brand, model, speed, capacity, type, latency, price, usage);
 					list.add(memoryUnit);
 				} else if (file.getName().equalsIgnoreCase("motherboard.txt")) {
 					String brand = splitWord[0];
@@ -80,8 +83,9 @@ public class Computer {
 
 					double pcieVersion = Double.valueOf(splitWord[6]);
 					int price = Integer.valueOf(splitWord[7]);
+					char usage = splitWord[8].charAt(0);
 					MotherBoard moboUnit = new MotherBoard(brand, model, chipset, socket, formFactor, m2Support,
-							pcieVersion, price);
+							pcieVersion, price, usage);
 					list.add(moboUnit);
 
 				} else if (file.getName().equalsIgnoreCase("processor.txt")) {
@@ -97,9 +101,10 @@ public class Computer {
 						isUnlocked = true;
 
 					int price = Integer.valueOf(splitWord[8]);
+					char usage = splitWord[9].charAt(0);
 
 					Processor processorUnit = new Processor(brand, model, core, thread, socket, clockSpeed, tdp, isUnlocked,
-							price);
+							price, usage);
 					list.add(processorUnit);
 				} else if (file.getName().equalsIgnoreCase("storage.txt")) {
 
@@ -114,14 +119,15 @@ public class Computer {
 					String type;
 					boolean hasCooling;
 					
-					if (splitWord.length == 7) {
+					if (splitWord.length == 8) {
 						String[] splitted = splitWord[3].split("-");
 						readSpeed = Integer.valueOf(splitted[0]);
 						writeSpeed = Integer.valueOf(splitted[1]);
 						type = splitWord[4];
 						hasCooling = Boolean.parseBoolean(splitWord[5]);
 						int price = Integer.valueOf(splitWord[6]);
-						SolidState storageUnit = new SolidState(brand, model, capacity, readSpeed, writeSpeed, price, type, hasCooling);
+						char usage = splitWord[7].charAt(0);
+						SolidState storageUnit = new SolidState(brand, model, capacity, readSpeed, writeSpeed, price, usage, type, hasCooling);
 						list.add(storageUnit);
 
 					} else {
@@ -129,7 +135,8 @@ public class Computer {
 						writeSpeed = 150;
 						int spin = Integer.valueOf(splitWord[3]);
 						int price = Integer.valueOf(splitWord[4]);
-						HardDrive storageUnit = new HardDrive(brand, model, capacity, readSpeed, writeSpeed, price, spin);
+						char usage = splitWord[5].charAt(0);
+						HardDrive storageUnit = new HardDrive(brand, model, capacity, readSpeed, writeSpeed, price, usage, spin);
 						list.add(storageUnit);
 					}
 

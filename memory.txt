@@ -1,20 +1,20 @@
-HyperX,Fury,3200,8,DDR4 SingleKit,16,500
-GSKILL,Ripjaws,2400,8,DDR4 SingleKit,15,500
-Corsair,Vengeance,3200,8,DDR4 SingleKit,16,650
-Thermaltake,Toughram Z-One,3200,16,DDR4 DualKit,16,1120
-XPG,Gammix,3000,16,DDR4 DualKit,16,860
-XPG,Gammix D30,3200,16,DDR4 SingleKit,16,740
-GSKILL,Flare X,3200,32,DDR4 DualKit,16,1950
-Silicon Power,XPower Turbine,3600,32,DDR4 DualKit,18,1970
-HyperX,Predator,3000,32,DDR4 DualKit,15,2160
-Patriot,Viper Steel,3200,32,DDR4 SingleKit,16,2350
-Corsair,Vengeance LPX,3000,32,DDR4 SingleKit,16,2180
-Corsair,Vengeance LPX,3000,8,DDR4 DualKit,16,470
-HyperX,Fury,3600,8,DDR4 SingleKit,17,600
-Silicon Power,XPower Turbine,2666,8,DDR4 SingleKit,16,450
-XPG,Spectrix D60G,3600,8,DDR4 SingleKit,17,730
-HyperX,Predator RGB,2933,8,DDR4 SingleKit,15,520
-Patriot,Viper Steel,3600,16,DDR4 SingleKit,18,865
-Corsair,Vengeance LPX,2666,16,DDR4 SingleKit,16,1150
-Corsair,Dominator Platinum RGB,3200,64,DDR4 QuadKit,16,4950
-Silicon Power,XPower Turbine RGB,3600,16,DDR4 DualKit,18,1220
+HyperX,Fury,3200,8,DDR4 SingleKit,16,500,g
+GSKILL,Ripjaws,2400,8,DDR4 SingleKit,15,500,d
+Corsair,Vengeance,3200,8,DDR4 SingleKit,16,650,g
+Thermaltake,Toughram Z-One,3200,16,DDR4 DualKit,16,1120,p
+XPG,Gammix,3000,16,DDR4 DualKit,16,860,g
+XPG,Gammix D30,3200,16,DDR4 SingleKit,16,740,g
+GSKILL,Flare X,3200,32,DDR4 DualKit,16,1950,p
+Silicon Power,XPower Turbine,3600,32,DDR4 DualKit,18,1970,g
+HyperX,Predator,3000,32,DDR4 DualKit,15,2160,g
+Patriot,Viper Steel,3200,32,DDR4 SingleKit,16,2350,p
+Corsair,Vengeance LPX,3000,32,DDR4 SingleKit,16,2180,g
+Corsair,Vengeance LPX,3000,8,DDR4 DualKit,16,470,d
+HyperX,Fury,3600,8,DDR4 SingleKit,17,600,d
+Silicon Power,XPower Turbine,2666,8,DDR4 SingleKit,16,450,d
+XPG,Spectrix D60G,3600,8,DDR4 SingleKit,17,730,d
+HyperX,Predator RGB,2933,8,DDR4 SingleKit,15,520,d
+Patriot,Viper Steel,3600,16,DDR4 SingleKit,18,865,d
+Corsair,Vengeance LPX,2666,16,DDR4 SingleKit,16,1150,g
+Corsair,Dominator Platinum RGB,3200,64,DDR4 QuadKit,16,4950,p
+Silicon Power,XPower Turbine RGB,3600,16,DDR4 DualKit,18,1220,g

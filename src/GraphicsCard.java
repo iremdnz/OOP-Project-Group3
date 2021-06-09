@@ -7,13 +7,23 @@ public class GraphicsCard {
 
 	private String brand, model, vendor;
 	private int capacity, price;
+	private char usage;
 
-	public GraphicsCard(String brand, String model, String vendor, int capacity, int price) {
+	public GraphicsCard(String brand, String model, String vendor, int capacity, int price, char usage) {
 		this.brand = brand;
 		this.model = model;
 		this.vendor = vendor;
 		this.capacity = capacity;
 		this.price = price;
+		this.usage = usage;
+	}
+
+	public char getUsage() {
+		return usage;
+	}
+
+	public void setUsage(char usage) {
+		this.usage = usage;
 	}
 
 	public String getBrand() {
