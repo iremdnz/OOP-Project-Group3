@@ -11,12 +11,19 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListCompFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTable mainTable;
+	private static DefaultTableModel caseModel;
+	private static String[][] caseData;
 
 	/**
 	 * Launch the application.
@@ -47,16 +54,17 @@ public class ListCompFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Component Type: ");
-		lblNewLabel.setBounds(102, 19, 148, 49);
+		lblNewLabel.setBounds(6, 19, 148, 49);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(302, 22, 268, 49);
+		comboBox.setBounds(166, 22, 268, 49);
 		contentPane.add(comboBox);
 		
 		mainTable = new JTable();
 		mainTable.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		mainTable.setDefaultEditor(Object.class, null);
 		JScrollPane js=new JScrollPane(mainTable);
 		js.setBounds(6, 94, 689, 329);
 		contentPane.add(js);
@@ -85,8 +93,8 @@ public class ListCompFrame extends JFrame {
 		DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
 		
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
-		String[][] caseData = getData(computerDB, 5);
-		DefaultTableModel caseModel = new DefaultTableModel(caseData, caseTag);
+		caseData = getData(computerDB, 5);
+		caseModel = new DefaultTableModel(caseData, caseTag);
 		
 		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage" };
 		String[][] storageData = getData(computerDB, 4);
@@ -112,6 +120,22 @@ public class ListCompFrame extends JFrame {
 				}
 			}
 		});
+		
+		Case testCase = new Case("Hebele", "Hubele", 750, 1350, 'd');
+		
+		JButton testButton = new JButton("DANDIK");
+		testButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				computerDB.getDatabase().get("case").add(testCase);
+				caseData = getData(computerDB, 5);
+				caseModel = new DefaultTableModel(caseData, caseTag);
+				mainTable.setModel(caseModel);
+				
+			}
+		});
+		testButton.setBounds(482, 32, 160, 29);
+		contentPane.add(testButton);
 	}
 
 	public String[][] getData(Computer computerDB, int comp) {
