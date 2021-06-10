@@ -205,7 +205,10 @@ public class ListCompFrame extends JFrame {
 				table.setBounds(35, 85, 602, 321);
 				table.setVisible(true);
 				contentPane.add(table);
+				
+				revalidate();
 
+				/*
 				JFrame f = new JFrame();
 				// adding it to JScrollPane
 				JScrollPane sp = new JScrollPane(table);
@@ -214,7 +217,7 @@ public class ListCompFrame extends JFrame {
 				f.setSize(540, 480);
 				// Frame Visible = true
 				f.setVisible(true);
-
+				*/
 			}
 
 		});
