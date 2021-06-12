@@ -12,6 +12,11 @@ public class HardDrive extends Storage {
 		super(brand, model, capacity, readSpeed, writeSpeed, price, usage);
 		this.spin = spin;
 	}
+	
+	public HardDrive(String brand, String model, String capacity, String readSpeed, String writeSpeed, String price, String usage, String spin) {
+		super(brand, model, capacity, readSpeed, writeSpeed, price, usage);
+		this.spin = Integer.parseInt(spin);
+	}
 
 	public int getSpin() {
 		return spin;

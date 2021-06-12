@@ -17,7 +17,7 @@ public class Processor {
 	private char usage;
 
 	public Processor(String brand, String model, int core, int thread, String socket, double clockSpeed, int tdp,
-			boolean isUnlocked, int price, char usage) {
+		boolean isUnlocked, int price, char usage) {
 		this.brand = brand;
 		this.model = model;
 		this.core = core;
@@ -28,6 +28,25 @@ public class Processor {
 		this.isUnlocked = isUnlocked;
 		this.price = price;
 		this.usage = usage;
+	}
+	
+	public Processor(String brand, String model, String core, String thread, String socket, String clockSpeed, String tdp,
+		String isUnlocked, String price, String usage) {
+		this.brand = brand;
+		this.model = model;
+		this.core = Integer.parseInt(core);
+		this.thread = Integer.parseInt(thread);
+		this.socket = socket;
+		this.clockSpeed = Double.parseDouble(clockSpeed);
+		this.tdp = Integer.parseInt(tdp);
+		if(isUnlocked.charAt(0) == 't' || isUnlocked.charAt(0) == 'T') {
+			this.isUnlocked = true;
+		}
+		else {
+			this.isUnlocked = false;
+		}
+		this.price = Integer.parseInt(price);
+		this.usage = usage.charAt(0);
 	}
 
 	public char getUsage() {

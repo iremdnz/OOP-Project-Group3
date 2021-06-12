@@ -12,7 +12,7 @@ public class MotherBoard {
 	private char usage;
 
 	public MotherBoard(String brand, String model, String chipset, String socket, String formFactor, boolean m2Support,
-			double pcieVersion, int price, char usage) {
+		double pcieVersion, int price, char usage) {
 		this.brand = brand;
 		this.model = model;
 		this.chipset = chipset;
@@ -22,6 +22,24 @@ public class MotherBoard {
 		this.pcieVersion = pcieVersion;
 		this.price = price;
 		this.usage = usage;
+	}
+	
+	public MotherBoard(String brand, String model, String chipset, String socket, String formFactor, String m2Support,
+		String pcieVersion, String price, String usage) {
+		this.brand = brand;
+		this.model = model;
+		this.chipset = chipset;
+		this.socket = socket;
+		this.formFactor = formFactor;
+		if(m2Support.charAt(0) == 't' || m2Support.charAt(0) == 'T') {
+			this.m2Support = true;
+		}
+		else {
+			this.m2Support = false;
+		}
+		this.pcieVersion = Double.parseDouble(pcieVersion);
+		this.price = Integer.parseInt(price);
+		this.usage = usage.charAt(0);
 	}
 
 	public char getUsage() {

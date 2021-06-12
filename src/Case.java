@@ -11,17 +11,22 @@ public class Case {
 		return  brand + " " + model + " " + psu + " Watt";
 	}
 
-	
-
 	public Case(String brand, String model, int psu, int price, char usage) {
-		super();
 		this.brand = brand;
 		this.model = model;
 		this.psu = psu;
 		this.price = price;
 		this.usage = usage;
 	}
-
+	
+	public Case(String brand, String model, String psu, String price, String usage) {
+		this.brand = brand;
+		this.model = model;
+		this.psu = Integer.parseInt(psu);
+		this.price = Integer.parseInt(price);
+		this.usage = usage.charAt(0);
+	}
+	
 	public char getUsage() {
 		return usage;
 	}

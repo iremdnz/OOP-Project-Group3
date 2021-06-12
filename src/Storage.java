@@ -18,7 +18,16 @@ public class Storage {
 		this.writeSpeed = writeSpeed;
 		this.price = price;
 		this.usage = usage;
-
+	}
+	
+	public Storage(String brand, String model, String capacity, String readSpeed, String writeSpeed, String price, String usage) {
+		this.brand = brand;
+		this.model = model;
+		this.capacity = Integer.parseInt(capacity);
+		this.readSpeed = Integer.parseInt(readSpeed);
+		this.writeSpeed = Integer.parseInt(writeSpeed);
+		this.price = Integer.parseInt(price);
+		this.usage = usage.charAt(0);
 	}
 
 	public char getUsage() {

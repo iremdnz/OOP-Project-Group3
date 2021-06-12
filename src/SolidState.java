@@ -16,6 +16,18 @@ public class SolidState extends Storage {
 		this.type = type;
 		this.hasCoolingSys = hasCoolingSys;
 	}
+	
+	public SolidState(String brand, String model, String capacity, String readSpeed, String writeSpeed, String price, String usage, String type,
+			String hasCoolingSys) {
+		super(brand, model, capacity, readSpeed, writeSpeed, price, usage);
+		this.type = type;
+		if(hasCoolingSys.charAt(0) == 't' || hasCoolingSys.charAt(0) == 'T') {
+			this.hasCoolingSys = true;
+		}
+		else {
+			this.hasCoolingSys = false;
+		}
+	}
 
 	public String getType() {
 		return type;

@@ -19,6 +19,17 @@ public class Memory {
 		this.price = price;
 		this.usage = usage;
 	}
+	
+	public Memory(String brand, String model, String speed, String capacity, String type, String latency, String price, String usage) {
+		this.brand = brand;
+		this.model = model;
+		this.speed = Integer.parseInt(speed);
+		this.capacity = Integer.parseInt(capacity);
+		this.type = type;
+		this.latency = Integer.parseInt(latency);
+		this.price = Integer.parseInt(price);
+		this.usage = usage.charAt(0);
+	}
 
 	public char getUsage() {
 		return usage;

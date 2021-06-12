@@ -17,6 +17,15 @@ public class GraphicsCard {
 		this.price = price;
 		this.usage = usage;
 	}
+	
+	public GraphicsCard(String brand, String model, String vendor, String capacity, String price, String usage) {
+		this.brand = brand;
+		this.model = model;
+		this.vendor = vendor;
+		this.capacity = Integer.parseInt(capacity);
+		this.price = Integer.parseInt(price);
+		this.usage = usage.charAt(0);
+	}
 
 	public char getUsage() {
 		return usage;
