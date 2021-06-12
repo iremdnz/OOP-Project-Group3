@@ -250,6 +250,7 @@ public class AddCompFrame extends JFrame {
 				for(int i = 0; i < 10; i++) {
 					if(labels[i].isVisible() == true && texts[i].getText().equals("")) {
 						JOptionPane.showMessageDialog(contentPane, "All specifiations must be filled" , "Warning", JOptionPane.WARNING_MESSAGE);
+						isValid = false;
 						break;
 					}
 					if(labels[i].getText().equals("Capacity") || labels[i].getText().equals("Price") || labels[i].getText().equals("Speed") ||
@@ -282,7 +283,7 @@ public class AddCompFrame extends JFrame {
 							break;
 						}
 					}
-					else { //sadece string direkt int yapýlamamalý
+					else { //sadece string direkt int yapï¿½lamamalï¿½
 						try {
 							Integer.parseInt(texts[i].getText());
 							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type" , "Warning", JOptionPane.WARNING_MESSAGE);
