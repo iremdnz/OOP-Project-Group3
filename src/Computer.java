@@ -42,7 +42,7 @@ public class Computer {
 				String[] splitWord = word.split(",");
 				if (file.getName().equalsIgnoreCase("case.txt")) {
 					String brand = splitWord[0];
-					String model = splitWord[1];
+				 	String model = splitWord[1];
 					int psu = Integer.valueOf(splitWord[2]);
 					int price = Integer.valueOf(splitWord[3]);
 					char usage = splitWord[4].charAt(0);

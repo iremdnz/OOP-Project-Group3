@@ -20,7 +20,7 @@ public class GraphicsCard {
 	
 	public GraphicsCard(String brand, String model, String vendor, String capacity, String price, String usage) {
 		this.brand = brand;
-		this.model = model;
+	 	this.model = model;
 		this.vendor = vendor;
 		this.capacity = Integer.parseInt(capacity);
 		this.price = Integer.parseInt(price);

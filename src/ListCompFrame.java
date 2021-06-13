@@ -61,11 +61,24 @@ public class ListCompFrame extends JFrame {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(166, 22, 268, 49);
 		contentPane.add(comboBox);
-		
+
 		mainTable = new JTable();
+		mainTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int row = mainTable.getSelectedRow();
+				int column = mainTable.getModel().getColumnCount();
+				for (int i = 0; i < column; i++) {
+					String value = mainTable.getModel().getValueAt(row, i).toString();
+					System.out.println(value);
+				}
+
+			}
+		});
 		mainTable.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		mainTable.setDefaultEditor(Object.class, null);
-		JScrollPane js=new JScrollPane(mainTable);
+		JScrollPane js = new JScrollPane(mainTable);
 		js.setBounds(6, 94, 689, 329);
 		contentPane.add(js);
 
@@ -76,33 +89,35 @@ public class ListCompFrame extends JFrame {
 			comboBox.addItem(key);
 		}
 
-		String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked", "Price", "Usage" };
+		String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked",
+				"Price", "Usage" };
 		String[][] processorData = getData(computerDB, 3);
 		DefaultTableModel cpuModel = new DefaultTableModel(processorData, processorTag);
-		
-		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price", "Usage" };
+
+		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
+				"Usage" };
 		String[][] motherboardData = getData(computerDB, 6);
 		DefaultTableModel mbModel = new DefaultTableModel(motherboardData, motherboardTag);
-		
+
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
 		String[][] memoryData = getData(computerDB, 2);
 		DefaultTableModel memoryModel = new DefaultTableModel(memoryData, memoryTag);
-		
+
 		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
 		String[][] gpuData = getData(computerDB, 1);
 		DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
-		
+
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
 		caseData = getData(computerDB, 5);
 		caseModel = new DefaultTableModel(caseData, caseTag);
-		
+
 		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage" };
 		String[][] storageData = getData(computerDB, 4);
 		DefaultTableModel storageModel = new DefaultTableModel(storageData, storageTag);
 
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				
+
 				String selectedComp = String.valueOf(comboBox.getSelectedItem());
 
 				if (selectedComp.equalsIgnoreCase("graphics_card")) {
@@ -118,11 +133,12 @@ public class ListCompFrame extends JFrame {
 				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
 					mainTable.setModel(mbModel);
 				}
+
 			}
 		});
-		
+
 		Case testCase = new Case("Hebele", "Hubele", 750, 1350, 'd');
-		
+
 		JButton testButton = new JButton("DANDIK");
 		testButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -131,7 +147,7 @@ public class ListCompFrame extends JFrame {
 				caseData = getData(computerDB, 5);
 				caseModel = new DefaultTableModel(caseData, caseTag);
 				mainTable.setModel(caseModel);
-				
+
 			}
 		});
 		testButton.setBounds(482, 32, 160, 29);
@@ -141,8 +157,8 @@ public class ListCompFrame extends JFrame {
 	public String[][] getData(Computer computerDB, int comp) {
 		String data[][] = null;
 		int size;
-		
-		switch(comp) {
+
+		switch (comp) {
 		case 1:
 			size = computerDB.getDatabase().get("graphics_card").size();
 			data = new String[size][6];
@@ -236,7 +252,7 @@ public class ListCompFrame extends JFrame {
 			}
 			break;
 		}
-		
+
 		return data;
 	}
 }

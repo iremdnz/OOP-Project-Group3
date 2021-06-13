@@ -46,7 +46,7 @@ public class AddCompFrame extends JFrame {
 	 */
 	public AddCompFrame() {
         
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,7 +63,7 @@ public class AddCompFrame extends JFrame {
 		contentPane.add(comboBox);
 		
 		JLabel label1 = new JLabel();
-		label1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+ 		label1.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		label1.setBounds(43, 105, 97, 26);
 		contentPane.add(label1);
 		label1.setVisible(false);
@@ -242,6 +242,8 @@ public class AddCompFrame extends JFrame {
 		
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addMouseListener(new MouseAdapter() {
+
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
