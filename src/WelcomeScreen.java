@@ -170,8 +170,12 @@ public class WelcomeScreen extends JFrame {
 					}
 					else {
 						User.userType = "admin";
-						String message = "Username: " + userName + "\nPassword: " + password;
-						JOptionPane.showMessageDialog(contentPane, message, "Login Info", JOptionPane.INFORMATION_MESSAGE);
+						//String message = "Username: " + userName + "\nPassword: " + password;
+						JOptionPane.showMessageDialog(contentPane, "Authorized! Switching to Admin Panel", "Login Info", JOptionPane.INFORMATION_MESSAGE);
+					
+						dispose();
+						AdminPanel adminPanel = new AdminPanel();
+						adminPanel.setVisible(true);
 					}
 					
 				}

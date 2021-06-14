@@ -51,6 +51,13 @@ public class AdminPanel extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JButton addComponentButton = new JButton("Add Component");
+		addComponentButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AddCompFrame addComp = new AddCompFrame();
+				addComp.setVisible(true);
+			}
+		});
 		addComponentButton.setBounds(106, 158, 459, 21);
 		contentPane.add(addComponentButton);
 
@@ -64,10 +71,14 @@ public class AdminPanel extends JFrame {
 		contentPane.add(removeComponentButton);
 
 		JButton editComponentButton = new JButton("Edit Component");
-		editComponentButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		editComponentButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				EditCompFrame editComp = new EditCompFrame();
+				editComp.setVisible(true);
 			}
 		});
+
 		editComponentButton.setBounds(106, 241, 459, 21);
 		contentPane.add(editComponentButton);
 
@@ -75,7 +86,8 @@ public class AdminPanel extends JFrame {
 		listComponentButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				ListCompFrame listFrame = new ListCompFrame();
+				listFrame.setVisible(true);
 			}
 		});
 		listComponentButton.addActionListener(new ActionListener() {

@@ -2,7 +2,7 @@
 public class User {
 	
 	private String userName;
-	public static String userType = "user" , adminName = "admin" ,adminPassword = "asdf123";
+	public static String userType = "user" , adminName = "admin" ,adminPassword = "1234";
 
 	public User(String userName) {
 		this.userName= userName;
