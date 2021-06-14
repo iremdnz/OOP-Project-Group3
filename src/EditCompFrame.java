@@ -24,13 +24,13 @@ public class EditCompFrame extends JFrame {
 	public static JTable mainTable;
 	public static int row, column;
 	private static DefaultTableModel caseModel;
-	
+
 	JComboBox<String> comboBox;
 	public static String selectedItem;
-	
+
 	public static Computer computerDB;
 	private static String[][] caseData;
- 
+
 	public static DefaultTableModel model;
 	public static String[] chosenTag;
 
