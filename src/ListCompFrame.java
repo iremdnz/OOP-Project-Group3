@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,38 +9,16 @@ import javax.swing.JTable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ListCompFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JTable mainTable;
-	private static DefaultTableModel caseModel;
-	private static String[][] caseData;
+	public static JTable mainTable;
+	public static DefaultTableModel caseModel, cpuModel, mbModel, memoryModel, gpuModel, storageModel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListCompFrame frame = new ListCompFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ListCompFrame() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,10 +28,10 @@ public class ListCompFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Component Type: ");
-		lblNewLabel.setBounds(6, 19, 148, 49);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		contentPane.add(lblNewLabel);
+		JLabel compTypeLabel = new JLabel("Component Type: ");
+		compTypeLabel.setBounds(6, 19, 148, 49);
+		compTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		contentPane.add(compTypeLabel);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(166, 22, 268, 49);
@@ -82,38 +57,36 @@ public class ListCompFrame extends JFrame {
 		js.setBounds(6, 94, 689, 329);
 		contentPane.add(js);
 
-		Computer computerDB = new Computer();
-
-		for (String entry : computerDB.getDatabase().keySet()) {
+		for (String entry : AdminPanel.computerDB.getDatabase().keySet()) {
 			String key = entry;
 			comboBox.addItem(key);
 		}
 
 		String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked",
 				"Price", "Usage" };
-		String[][] processorData = getData(computerDB, 3);
-		DefaultTableModel cpuModel = new DefaultTableModel(processorData, processorTag);
+		String[][] processorData = getData(AdminPanel.computerDB, 3);
+		cpuModel = new DefaultTableModel(processorData, processorTag);
 
 		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
 				"Usage" };
-		String[][] motherboardData = getData(computerDB, 6);
-		DefaultTableModel mbModel = new DefaultTableModel(motherboardData, motherboardTag);
+		String[][] motherboardData = getData(AdminPanel.computerDB, 6);
+		mbModel = new DefaultTableModel(motherboardData, motherboardTag);
 
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
-		String[][] memoryData = getData(computerDB, 2);
-		DefaultTableModel memoryModel = new DefaultTableModel(memoryData, memoryTag);
+		String[][] memoryData = getData(AdminPanel.computerDB, 2);
+		memoryModel = new DefaultTableModel(memoryData, memoryTag);
 
 		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
-		String[][] gpuData = getData(computerDB, 1);
-		DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
+		String[][] gpuData = getData(AdminPanel.computerDB, 1);
+		gpuModel = new DefaultTableModel(gpuData, gpuTag);
 
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
-		caseData = getData(computerDB, 5);
+		String[][] caseData = getData(AdminPanel.computerDB, 5);
 		caseModel = new DefaultTableModel(caseData, caseTag);
 
 		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage" };
-		String[][] storageData = getData(computerDB, 4);
-		DefaultTableModel storageModel = new DefaultTableModel(storageData, storageTag);
+		String[][] storageData = getData(AdminPanel.computerDB, 4);
+		storageModel = new DefaultTableModel(storageData, storageTag);
 
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -136,22 +109,6 @@ public class ListCompFrame extends JFrame {
 
 			}
 		});
-
-		Case testCase = new Case("Hebele", "Hubele", 750, 1350, 'd');
-
-		JButton testButton = new JButton("DANDIK");
-		testButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				computerDB.getDatabase().get("case").add(testCase);
-				caseData = getData(computerDB, 5);
-				caseModel = new DefaultTableModel(caseData, caseTag);
-				mainTable.setModel(caseModel);
-
-			}
-		});
-		testButton.setBounds(482, 32, 160, 29);
-		contentPane.add(testButton);
 	}
 
 	public String[][] getData(Computer computerDB, int comp) {

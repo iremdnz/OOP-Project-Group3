@@ -1,20 +1,15 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,29 +22,14 @@ public class EditCompFrame extends JFrame {
 
 	JComboBox<String> comboBox;
 	public static String selectedItem;
-
-	public static Computer computerDB;
 	private static String[][] caseData;
 
 	public static DefaultTableModel model;
 	public static String[] chosenTag;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EditCompFrame frame = new EditCompFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public EditCompFrame() {
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 700, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,9 +45,7 @@ public class EditCompFrame extends JFrame {
 		comboBox.setBounds(214, 27, 239, 29);
 		contentPane.add(comboBox);
 
-		computerDB = new Computer();
-
-		for (String entry : computerDB.getDatabase().keySet()) {
+		for (String entry : AdminPanel.computerDB.getDatabase().keySet()) {
 			String key = entry;
 
 			comboBox.addItem(key);
@@ -86,28 +64,28 @@ public class EditCompFrame extends JFrame {
 
 		String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked",
 				"Price", "Usage" };
-		String[][] processorData = getData(computerDB, 3);
+		String[][] processorData = getData(AdminPanel.computerDB, 3);
 		DefaultTableModel cpuModel = new DefaultTableModel(processorData, processorTag);
 
 		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
 				"Usage" };
-		String[][] motherboardData = getData(computerDB, 6);
+		String[][] motherboardData = getData(AdminPanel.computerDB, 6);
 		DefaultTableModel mbModel = new DefaultTableModel(motherboardData, motherboardTag);
 
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
-		String[][] memoryData = getData(computerDB, 2);
+		String[][] memoryData = getData(AdminPanel.computerDB, 2);
 		DefaultTableModel memoryModel = new DefaultTableModel(memoryData, memoryTag);
 
 		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
-		String[][] gpuData = getData(computerDB, 1);
+		String[][] gpuData = getData(AdminPanel.computerDB, 1);
 		DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
 
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
-		caseData = getData(computerDB, 5);
+		caseData = getData(AdminPanel.computerDB, 5);
 		caseModel = new DefaultTableModel(caseData, caseTag);
 
 		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage" };
-		String[][] storageData = getData(computerDB, 4);
+		String[][] storageData = getData(AdminPanel.computerDB, 4);
 		DefaultTableModel storageModel = new DefaultTableModel(storageData, storageTag);
 
 		comboBox.addActionListener(new ActionListener() {

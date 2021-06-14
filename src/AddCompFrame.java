@@ -1,9 +1,6 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -11,9 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
-import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -25,25 +20,6 @@ public class AddCompFrame extends JFrame {
 	private JTextField text1, text2, text3, text4, text5, text6, text7, text8, text9, text10;
 	private static String[] chosenTag;
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddCompFrame frame = new AddCompFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public AddCompFrame() {
         
 	 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -183,10 +159,8 @@ public class AddCompFrame extends JFrame {
 		
 		JLabel[] labels = {label1,label2,label3,label4,label5,label6,label7,label8,label9,label10}; 
 		JTextField[] texts = {text1,text2,text3,text4,text5,text6,text7,text8,text9,text10};
-
-		Computer computerDB = new Computer();
 		
-		for (String entry : computerDB.getDatabase().keySet()) {
+		for (String entry : AdminPanel.computerDB.getDatabase().keySet()) {
 			String key = entry;
 			if(key.equals("storage")) {
 				comboBox.addItem("solid_state");
@@ -241,6 +215,10 @@ public class AddCompFrame extends JFrame {
 		});
 		
 		JButton btnNewButton = new JButton("Add");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 
 
@@ -303,26 +281,47 @@ public class AddCompFrame extends JFrame {
 				if(isValid == true) {
 					if (selectedComp.equalsIgnoreCase("graphics_card")) {
 						GraphicsCard gpu = new GraphicsCard(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText());
-						computerDB.getDatabase().get("graphics_card").add(gpu);
+						AdminPanel.computerDB.getDatabase().get("graphics_card").add(gpu);
 					} else if (selectedComp.equalsIgnoreCase("memory")) {
 						Memory memory = new Memory(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText());
-						computerDB.getDatabase().get("memory").add(memory);
+						AdminPanel.computerDB.getDatabase().get("memory").add(memory);
 					} else if (selectedComp.equalsIgnoreCase("processor")) {
 						Processor processor = new Processor(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),
 						texts[6].getText(),texts[7].getText(),texts[8].getText(),texts[9].getText());
-						computerDB.getDatabase().get("processor").add(processor);
+						AdminPanel.computerDB.getDatabase().get("processor").add(processor);
 					} else if (selectedComp.equalsIgnoreCase("solid_state")) {
 						SolidState solidState = new SolidState(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText(),texts[8].getText());
-						computerDB.getDatabase().get("storage").add(solidState);
+						AdminPanel.computerDB.getDatabase().get("storage").add(solidState);
 					} else if (selectedComp.equalsIgnoreCase("hard_disk")) {
 						HardDrive hardDrive = new HardDrive(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText());
-						computerDB.getDatabase().get("storage").add(hardDrive);
+						AdminPanel.computerDB.getDatabase().get("storage").add(hardDrive);
 					} else if (selectedComp.equalsIgnoreCase("case")) {
 						Case casee = new Case(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText());
-						computerDB.getDatabase().get("case").add(casee);
+						AdminPanel.computerDB.getDatabase().get("case").add(casee);
 					} else if (selectedComp.equalsIgnoreCase("motherboard")) {
 						MotherBoard motherboard = new MotherBoard(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText(),texts[8].getText());
-						computerDB.getDatabase().get("motherboard").add(motherboard);
+						AdminPanel.computerDB.getDatabase().get("motherboard").add(motherboard);
+					}
+					
+					JOptionPane.showMessageDialog(contentPane, "Component added successfully!", "Add Info", JOptionPane.INFORMATION_MESSAGE);
+					
+					ListCompFrame listFrame = new ListCompFrame();
+					listFrame.setVisible(true);
+					
+					if (selectedComp.equalsIgnoreCase("graphics_card")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.gpuModel);
+					} else if (selectedComp.equalsIgnoreCase("memory")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.memoryModel);
+					} else if (selectedComp.equalsIgnoreCase("processor")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.cpuModel);
+					} else if (selectedComp.equalsIgnoreCase("solid_state")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.storageModel);
+					} else if (selectedComp.equalsIgnoreCase("hard_disk")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.storageModel);
+					} else if (selectedComp.equalsIgnoreCase("case")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.caseModel);
+					} else if (selectedComp.equalsIgnoreCase("motherboard")) {
+						ListCompFrame.mainTable.setModel(ListCompFrame.mbModel);
 					}
 				}
 			}

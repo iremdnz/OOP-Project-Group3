@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,10 +15,8 @@ import java.awt.event.MouseEvent;
 public class AdminPanel extends JFrame {
 
 	private JPanel contentPane;
+	public static Computer computerDB;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,10 +30,10 @@ public class AdminPanel extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public AdminPanel() {
+		computerDB = new Computer();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 450);
 		contentPane = new JPanel();
@@ -62,6 +59,13 @@ public class AdminPanel extends JFrame {
 		contentPane.add(addComponentButton);
 
 		JButton removeComponentButton = new JButton("Remove Component");
+		removeComponentButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DeleteCompFrame deleteComp = new DeleteCompFrame();
+				deleteComp.setVisible(true);
+			}
+		});
 		removeComponentButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
