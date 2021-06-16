@@ -26,9 +26,10 @@ public class EditCompFrame extends JFrame {
 	public static String[] chosenTag;
 
 	public EditCompFrame() {
+		setResizable(false);
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

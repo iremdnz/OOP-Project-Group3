@@ -22,8 +22,9 @@ public class DeleteCompFrame extends JFrame {
 	public static JTable mainTable;
 
 	public DeleteCompFrame() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -238,6 +239,7 @@ public class DeleteCompFrame extends JFrame {
 		contentPane.add(js);
 		
 		JButton removeButton = new JButton("Remove Selected");
+		removeButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		removeButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -405,7 +407,7 @@ public class DeleteCompFrame extends JFrame {
 				}
 			}
 		});
-		removeButton.setBounds(493, 27, 138, 29);
+		removeButton.setBounds(491, 28, 161, 35);
 		contentPane.add(removeButton);
 		
 		

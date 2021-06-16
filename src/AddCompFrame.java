@@ -21,9 +21,10 @@ public class AddCompFrame extends JFrame {
 	private static String[] chosenTag;
 	
 	public AddCompFrame() {
+		setResizable(false);
         
 	 	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+	 	setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -34,7 +35,7 @@ public class AddCompFrame extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblNewLabel);
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox();
 		comboBox.setBounds(184, 33, 321, 26);
 		contentPane.add(comboBox);
 		
@@ -203,14 +204,14 @@ public class AddCompFrame extends JFrame {
 							Integer.parseInt(texts[i].getText());
 						}
 						catch(Exception e1) {
-							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type" , "Warning", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type1" , "Warning", JOptionPane.WARNING_MESSAGE);
 							isValid = false;
 							break;
 						}
 					}
 					else if(labels[i].getText().equals("M.2") || labels[i].getText().equals("Unlocked")) {
 						if(!(texts[i].getText().equalsIgnoreCase("true") || texts[i].getText().equalsIgnoreCase("false"))) {
-							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type" , "Warning", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type2" , "Warning", JOptionPane.WARNING_MESSAGE);
 							isValid = false;
 							break;
 						}
@@ -221,15 +222,24 @@ public class AddCompFrame extends JFrame {
 							Double.parseDouble(texts[i].getText());
 						}
 						catch(Exception e1) {
-							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type" , "Warning", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type3" , "Warning", JOptionPane.WARNING_MESSAGE);
 							isValid = false;
 							break;
 						}
 					}
-					else { //sadece string direkt int yap�lamamal�
+					else if(labels[i].getText().equals("Usage")) {
+						
+						if(!(texts[i].getText().equals("d") || texts[i].getText().equals("g") || texts[i].getText().equals("p"))) {
+							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type5" , "Warning", JOptionPane.WARNING_MESSAGE);
+							isValid = false;
+							break;
+						}
+						
+					}
+					else { //sadece string direkt int olmamali
 						try {
 							Integer.parseInt(texts[i].getText());
-							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type" , "Warning", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(contentPane, "Please enter specifiations in correct type4" , "Warning", JOptionPane.WARNING_MESSAGE);
 							isValid = false;
 							break;
 						}

@@ -21,20 +21,21 @@ public class ListCompFrame extends JFrame {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ListCompFrame() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel compTypeLabel = new JLabel("Component Type: ");
-		compTypeLabel.setBounds(6, 19, 148, 49);
+		compTypeLabel.setBounds(6, 19, 155, 49);
 		compTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(compTypeLabel);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(166, 22, 268, 49);
+		comboBox.setBounds(214, 27, 239, 29);
 		contentPane.add(comboBox);
 
 		mainTable = new JTable();

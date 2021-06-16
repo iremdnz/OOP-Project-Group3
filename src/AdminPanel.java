@@ -32,10 +32,11 @@ public class AdminPanel extends JFrame {
 
 
 	public AdminPanel() {
+		setResizable(false);
 		computerDB = new Computer();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -48,6 +49,7 @@ public class AdminPanel extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		JButton addComponentButton = new JButton("Add Component");
+		addComponentButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		addComponentButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -55,10 +57,11 @@ public class AdminPanel extends JFrame {
 				addComp.setVisible(true);
 			}
 		});
-		addComponentButton.setBounds(106, 158, 459, 21);
+		addComponentButton.setBounds(106, 158, 459, 30);
 		contentPane.add(addComponentButton);
 
 		JButton removeComponentButton = new JButton("Remove Component");
+		removeComponentButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		removeComponentButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -71,10 +74,11 @@ public class AdminPanel extends JFrame {
 
 			}
 		});
-		removeComponentButton.setBounds(106, 201, 459, 21);
+		removeComponentButton.setBounds(106, 208, 459, 30);
 		contentPane.add(removeComponentButton);
 
 		JButton editComponentButton = new JButton("Edit Component");
+		editComponentButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		editComponentButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -83,10 +87,11 @@ public class AdminPanel extends JFrame {
 			}
 		});
 
-		editComponentButton.setBounds(106, 241, 459, 21);
+		editComponentButton.setBounds(106, 258, 459, 30);
 		contentPane.add(editComponentButton);
 
 		JButton listComponentButton = new JButton("List Components");
+		listComponentButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		listComponentButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -98,7 +103,7 @@ public class AdminPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		listComponentButton.setBounds(106, 284, 459, 21);
+		listComponentButton.setBounds(106, 308, 459, 30);
 		contentPane.add(listComponentButton);
 	}
 }

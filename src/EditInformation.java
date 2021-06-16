@@ -19,8 +19,9 @@ public class EditInformation extends JFrame {
 	private JLabel label1, label2, label3, label4, label5, label6, label7, label8, label9, label10;
 
 	public EditInformation() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(100, 100, 712, 465);
 		editContentPane = new JPanel();
 		editContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		editContentPane.setLayout(null);

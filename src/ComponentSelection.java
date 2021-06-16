@@ -54,12 +54,13 @@ public class ComponentSelection extends JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	public ComponentSelection() {
+		setResizable(false);
 		computer = new Computer();
 		userChoices = new Stack<>();
 		tempChoices = new Stack<>();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
+		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -167,7 +168,7 @@ public class ComponentSelection extends JFrame {
 		compInformation.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		compInformation.setEditable(false);
 		compInformation.setVisible(false);
-		compInformation.setBounds(371, 174, 304, 170);
+		compInformation.setBounds(339, 169, 304, 170);
 		contentPane.add(compInformation);
 
 		dropList1.addActionListener(new ActionListener() {
