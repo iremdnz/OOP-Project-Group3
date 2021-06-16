@@ -13,9 +13,3 @@ Raijintek,Silenos PRO 3,750,1650,g
 Dark,Guardian PRO,750,1500,g
 ASUS,TUF GT301,650,1753,g
 ASUS,Rog Strix GX601,1000,6562,p
-
-
-
-
-
-
