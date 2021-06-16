@@ -38,19 +38,6 @@ public class ListCompFrame extends JFrame {
 		contentPane.add(comboBox);
 
 		mainTable = new JTable();
-		mainTable.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				int row = mainTable.getSelectedRow();
-				int column = mainTable.getModel().getColumnCount();
-				for (int i = 0; i < column; i++) {
-					String value = mainTable.getModel().getValueAt(row, i).toString();
-					System.out.println(value);
-				}
-
-			}
-		});
 		mainTable.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		mainTable.setDefaultEditor(Object.class, null);
 		JScrollPane js = new JScrollPane(mainTable);
@@ -84,7 +71,7 @@ public class ListCompFrame extends JFrame {
 		String[][] caseData = getData(AdminPanel.computerDB, 5);
 		caseModel = new DefaultTableModel(caseData, caseTag);
 
-		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage" };
+		String[] storageTag = { "Brand", "Model", "Capacity","Read Speed", "Write Speed", "Price", "Usage" };
 		String[][] storageData = getData(AdminPanel.computerDB, 4);
 		storageModel = new DefaultTableModel(storageData, storageTag);
 
@@ -166,16 +153,17 @@ public class ListCompFrame extends JFrame {
 			break;
 		case 4:
 			size = computerDB.getDatabase().get("storage").size();
-			data = new String[size][6];
+			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
 				Storage storage = (Storage) computerDB.getDatabase().get("storage").get(i);
 
 				data[i][0] = storage.getBrand();
 				data[i][1] = storage.getModel();
-				data[i][2] = "" + storage.getReadSpeed();
-				data[i][3] = "" + storage.getWriteSpeed();
-				data[i][4] = "" + storage.getPrice();
-				data[i][5] = "" + storage.getUsage();
+				data[i][2] = "" + storage.getCapacity();
+				data[i][3] = "" + storage.getReadSpeed();
+				data[i][4] = "" + storage.getWriteSpeed();
+				data[i][5] = "" + storage.getPrice();
+				data[i][6] = "" + storage.getUsage();
 			}
 			break;
 		case 5:

@@ -134,18 +134,98 @@ public class DeleteCompFrame extends JFrame {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selectedComp = String.valueOf(comboBox.getSelectedItem());
+				
 				if (selectedComp.equalsIgnoreCase("graphics_card")) {
-					mainTable.setModel(gpuModel);
+					Object[][] newGpuData = getData(AdminPanel.computerDB, 1);
+					DefaultTableModel newGpuModel = new DefaultTableModel(newGpuData, gpuTag){
+						@SuppressWarnings("unchecked")
+						@Override
+				         public Class getColumnClass(int column) {
+							switch (column) {
+			                case 6:
+			                    return Boolean.class;
+			                default:
+			                	return String.class;
+			            }
+				         }
+					};
+					mainTable.setModel(newGpuModel);
 				} else if (selectedComp.equalsIgnoreCase("memory")) {
-					mainTable.setModel(memoryModel);
+					Object[][] newMemoryData = getData(AdminPanel.computerDB, 2);
+					DefaultTableModel newMemoryModel = new DefaultTableModel(newMemoryData, memoryTag){
+						@SuppressWarnings("unchecked")
+						@Override
+				         public Class getColumnClass(int column) {
+							switch (column) {
+			                case 8:
+			                    return Boolean.class;
+			                default:
+			                	return String.class;
+			            }
+				         }
+					};
+					mainTable.setModel(newMemoryModel);
 				} else if (selectedComp.equalsIgnoreCase("processor")) {
-					mainTable.setModel(cpuModel);
+					Object[][] newProcessorData = getData(AdminPanel.computerDB, 3);
+					DefaultTableModel newCpuModel = new DefaultTableModel(newProcessorData, processorTag) {
+						@SuppressWarnings("unchecked")
+						@Override
+				         public Class getColumnClass(int column) {
+							switch (column) {
+			                case 10:
+			                    return Boolean.class;
+			                default:
+			                	return String.class;
+			            }
+				         }
+					};
+					
+					mainTable.setModel(newCpuModel);
 				} else if (selectedComp.equalsIgnoreCase("storage")) {
-					mainTable.setModel(storageModel);
+					Object[][] newStorageData = getData(AdminPanel.computerDB, 4);
+					DefaultTableModel newStorageModel = new DefaultTableModel(newStorageData, storageTag){
+						@SuppressWarnings("unchecked")
+						@Override
+				         public Class getColumnClass(int column) {
+							switch (column) {
+			                case 6:
+			                    return Boolean.class;
+			                default:
+			                	return String.class;
+			            }
+				         }
+					};
+					mainTable.setModel(newStorageModel);
 				} else if (selectedComp.equalsIgnoreCase("case")) {
-					mainTable.setModel(caseModel);
+					Object[][] newCaseData = getData(AdminPanel.computerDB, 5);
+					DefaultTableModel newCaseModel = new DefaultTableModel(newCaseData, caseTag){
+						@SuppressWarnings("unchecked")
+						@Override
+				         public Class getColumnClass(int column) {
+							switch (column) {
+			                case 5:
+			                    return Boolean.class;
+			                default:
+			                	return String.class;
+			            }
+				         }
+					};
+					mainTable.setModel(newCaseModel);
 				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
-					mainTable.setModel(mbModel);
+					Object[][] newMotherboardData = getData(AdminPanel.computerDB, 6);
+					DefaultTableModel newMbModel = new DefaultTableModel(newMotherboardData, motherboardTag) {
+						@SuppressWarnings("unchecked")
+						@Override
+				         public Class getColumnClass(int column) {
+							switch (column) {
+			                case 9:
+			                    return Boolean.class;
+			                default:
+			                	return String.class;
+			            }
+				         }
+					};
+					mainTable.setModel(newMbModel);
 				}
 			}
 		});
@@ -311,7 +391,7 @@ public class DeleteCompFrame extends JFrame {
 												&& mobo.getChipset().equals(mainTable.getValueAt(i, 2).toString())
 												&& mobo.getPrice() == Integer.parseInt(mainTable.getValueAt(i, 7).toString())) {
 
-											AdminPanel.computerDB.getDatabase().get("case").remove(mobo);
+											AdminPanel.computerDB.getDatabase().get("motherboard").remove(mobo);
 											break;
 										}
 									}
@@ -389,17 +469,18 @@ public class DeleteCompFrame extends JFrame {
 			break;
 		case 4:
 			size = computerDB.getDatabase().get("storage").size();
-			data = new Object[size][7];
+			data = new Object[size][8];
 			for (int i = 0; i < size; i++) {
 				Storage storage = (Storage) computerDB.getDatabase().get("storage").get(i);
 
 				data[i][0] = storage.getBrand();
 				data[i][1] = storage.getModel();
-				data[i][2] = "" + storage.getReadSpeed();
-				data[i][3] = "" + storage.getWriteSpeed();
-				data[i][4] = "" + storage.getPrice();
-				data[i][5] = "" + storage.getUsage();
-				data[i][6] = false;
+				data[i][2] = storage.getCapacity();
+				data[i][3] = "" + storage.getReadSpeed();
+				data[i][4] = "" + storage.getWriteSpeed();
+				data[i][5] = "" + storage.getPrice();
+				data[i][6] = "" + storage.getUsage();
+				data[i][7] = false;
 			}
 			break;
 		case 5:

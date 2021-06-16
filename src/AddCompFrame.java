@@ -156,6 +156,7 @@ public class AddCompFrame extends JFrame {
 		text10.setBounds(468, 297, 156, 26);
 		contentPane.add(text10);
 		text10.setColumns(10);
+		text10.setVisible(false);
 		
 		JLabel[] labels = {label1,label2,label3,label4,label5,label6,label7,label8,label9,label10}; 
 		JTextField[] texts = {text1,text2,text3,text4,text5,text6,text7,text8,text9,text10};
@@ -174,51 +175,12 @@ public class AddCompFrame extends JFrame {
 		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
 		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "Form Factor", "M.2", "PCIE", "Price", "Usage" };
-		String[] solidTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage", "Type", "Cooling S." };
-		String[] hardTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage", "Spin" };
+		String[] solidTag = { "Brand", "Model", "Capacity","Read Speed", "Write Speed", "Price", "Usage", "Type", "Cooling S." };
+		String[] hardTag = { "Brand", "Model", "Capacity", "Read Speed", "Write Speed", "Price", "Usage", "Spin" };
 		String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "Unlocked", "Price", "Usage" };
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
 		
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				
-				for(int i = 0; i < 10; i++) {
-					labels[i].setVisible(false);
-					texts[i].setVisible(false);
-				}
-				
-				String selectedComp = String.valueOf(comboBox.getSelectedItem());
-
-				if (selectedComp.equalsIgnoreCase("graphics_card")) {
-					chosenTag = gpuTag;
-				} else if (selectedComp.equalsIgnoreCase("memory")) {
-					chosenTag = memoryTag;
-				} else if (selectedComp.equalsIgnoreCase("processor")) {
-					chosenTag = processorTag;
-				} else if (selectedComp.equalsIgnoreCase("solid_state")) {
-					chosenTag = solidTag;
-				} else if (selectedComp.equalsIgnoreCase("hard_disk")) {
-					chosenTag = hardTag;
-				} else if (selectedComp.equalsIgnoreCase("case")) {
-					chosenTag = caseTag;
-				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
-					chosenTag = motherboardTag;
-				}
-				
-				for(int i = 0; i < chosenTag.length; i++) {
-					labels[i].setText(chosenTag[i]);
-					labels[i].setVisible(true);
-					texts[i].setVisible(true);
-				}
-				
-			}
-		});
-		
 		JButton btnNewButton = new JButton("Add");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 
 
@@ -235,7 +197,8 @@ public class AddCompFrame extends JFrame {
 					}
 					if(labels[i].getText().equals("Capacity") || labels[i].getText().equals("Price") || labels[i].getText().equals("Speed") ||
 					labels[i].getText().equals("Latency") || labels[i].getText().equals("Read Speed") || labels[i].getText().equals("Write Speed") ||
-					labels[i].getText().equals("Core") || labels[i].getText().equals("Thread") || labels[i].getText().equals("TDP") || labels[i].getText().equals("PSU")) {
+					labels[i].getText().equals("Core") || labels[i].getText().equals("Thread") || labels[i].getText().equals("TDP") || labels[i].getText().equals("PSU")
+					|| labels[i].getText().equals("Spin")) {
 						try {
 							Integer.parseInt(texts[i].getText());
 						}
@@ -283,7 +246,7 @@ public class AddCompFrame extends JFrame {
 						GraphicsCard gpu = new GraphicsCard(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText());
 						AdminPanel.computerDB.getDatabase().get("graphics_card").add(gpu);
 					} else if (selectedComp.equalsIgnoreCase("memory")) {
-						Memory memory = new Memory(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText());
+						Memory memory = new Memory(texts[0].getText(),texts[1].getText(),texts[3].getText(), texts[4].getText(),texts[2].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText());
 						AdminPanel.computerDB.getDatabase().get("memory").add(memory);
 					} else if (selectedComp.equalsIgnoreCase("processor")) {
 						Processor processor = new Processor(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),
@@ -327,12 +290,45 @@ public class AddCompFrame extends JFrame {
 			}
 		});
 		
-		
-		
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnNewButton.setBounds(535, 359, 89, 26);
+		btnNewButton.setVisible(false);
 		contentPane.add(btnNewButton);
-		text10.setVisible(false);
 		
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				
+				for(int i = 0; i < 10; i++) {
+					labels[i].setVisible(false);
+					texts[i].setVisible(false);
+				}
+				
+				String selectedComp = String.valueOf(comboBox.getSelectedItem());
+
+				if (selectedComp.equalsIgnoreCase("graphics_card")) {
+					chosenTag = gpuTag;
+				} else if (selectedComp.equalsIgnoreCase("memory")) {
+					chosenTag = memoryTag;
+				} else if (selectedComp.equalsIgnoreCase("processor")) {
+					chosenTag = processorTag;
+				} else if (selectedComp.equalsIgnoreCase("solid_state")) {
+					chosenTag = solidTag;
+				} else if (selectedComp.equalsIgnoreCase("hard_disk")) {
+					chosenTag = hardTag;
+				} else if (selectedComp.equalsIgnoreCase("case")) {
+					chosenTag = caseTag;
+				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
+					chosenTag = motherboardTag;
+				}
+				
+				for(int i = 0; i < chosenTag.length; i++) {
+					labels[i].setText(chosenTag[i]);
+					labels[i].setVisible(true);
+					texts[i].setVisible(true);
+				}
+				
+				btnNewButton.setVisible(true);
+			}
+		});
 	}
 }

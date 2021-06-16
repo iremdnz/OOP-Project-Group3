@@ -18,11 +18,9 @@ public class EditCompFrame extends JFrame {
 	private JPanel contentPane;
 	public static JTable mainTable;
 	public static int row, column;
-	private static DefaultTableModel caseModel;
 
 	JComboBox<String> comboBox;
 	public static String selectedItem;
-	private static String[][] caseData;
 
 	public static DefaultTableModel model;
 	public static String[] chosenTag;
@@ -52,9 +50,6 @@ public class EditCompFrame extends JFrame {
 
 		}
 
-		JPanel editContentPane = new JPanel();
-		JFrame editFrame = new JFrame();
-
 		mainTable = new JTable();
 		mainTable.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		mainTable.setDefaultEditor(Object.class, null);
@@ -62,47 +57,46 @@ public class EditCompFrame extends JFrame {
 		js.setBounds(6, 94, 689, 329);
 		contentPane.add(js);
 
-		String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked",
-				"Price", "Usage" };
-		String[][] processorData = getData(AdminPanel.computerDB, 3);
-		DefaultTableModel cpuModel = new DefaultTableModel(processorData, processorTag);
-
-		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
-				"Usage" };
-		String[][] motherboardData = getData(AdminPanel.computerDB, 6);
-		DefaultTableModel mbModel = new DefaultTableModel(motherboardData, motherboardTag);
-
-		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
-		String[][] memoryData = getData(AdminPanel.computerDB, 2);
-		DefaultTableModel memoryModel = new DefaultTableModel(memoryData, memoryTag);
-
-		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
-		String[][] gpuData = getData(AdminPanel.computerDB, 1);
-		DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
-
-		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
-		caseData = getData(AdminPanel.computerDB, 5);
-		caseModel = new DefaultTableModel(caseData, caseTag);
-
-		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage" };
-		String[][] storageData = getData(AdminPanel.computerDB, 4);
-		DefaultTableModel storageModel = new DefaultTableModel(storageData, storageTag);
-
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 
 				String selectedComp = String.valueOf(comboBox.getSelectedItem());
 				if (selectedComp.equalsIgnoreCase("graphics_card")) {
+					String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
+					String[][] gpuData = getData(AdminPanel.computerDB, 1);
+					DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
 					mainTable.setModel(gpuModel);
+					
 				} else if (selectedComp.equalsIgnoreCase("memory")) {
+					String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
+					String[][] memoryData = getData(AdminPanel.computerDB, 2);
+					DefaultTableModel memoryModel = new DefaultTableModel(memoryData, memoryTag);
 					mainTable.setModel(memoryModel);
+					
 				} else if (selectedComp.equalsIgnoreCase("processor")) {
+					String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked",
+							"Price", "Usage" };
+					String[][] processorData = getData(AdminPanel.computerDB, 3);
+					DefaultTableModel cpuModel = new DefaultTableModel(processorData, processorTag);
 					mainTable.setModel(cpuModel);
+					
 				} else if (selectedComp.equalsIgnoreCase("storage")) {
+					String[] storageTag = { "Brand", "Model", "Capacity", "Read Speed", "Write Speed", "Price", "Usage" };
+					String[][] storageData = getData(AdminPanel.computerDB, 4);
+					DefaultTableModel storageModel = new DefaultTableModel(storageData, storageTag);
 					mainTable.setModel(storageModel);
+					
 				} else if (selectedComp.equalsIgnoreCase("case")) {
+					String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
+					String[][] caseData = getData(AdminPanel.computerDB, 5);
+					DefaultTableModel caseModel = new DefaultTableModel(caseData, caseTag);
 					mainTable.setModel(caseModel);
+					
 				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
+					String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
+					"Usage" };
+					String[][] motherboardData = getData(AdminPanel.computerDB, 6);
+					DefaultTableModel mbModel = new DefaultTableModel(motherboardData, motherboardTag);
 					mainTable.setModel(mbModel);
 				}
 
@@ -111,7 +105,7 @@ public class EditCompFrame extends JFrame {
 		mainTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String selectedVal = null;
+
 				if (e.getClickCount() == 2) {
 					row = mainTable.getSelectedRow();
 					column = mainTable.getColumnCount();
@@ -179,16 +173,17 @@ public class EditCompFrame extends JFrame {
 			break;
 		case 4:
 			size = computerDB.getDatabase().get("storage").size();
-			data = new String[size][6];
+			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
 				Storage storage = (Storage) computerDB.getDatabase().get("storage").get(i);
 
 				data[i][0] = storage.getBrand();
 				data[i][1] = storage.getModel();
-				data[i][2] = "" + storage.getReadSpeed();
-				data[i][3] = "" + storage.getWriteSpeed();
-				data[i][4] = "" + storage.getPrice();
-				data[i][5] = "" + storage.getUsage();
+				data[i][2] = "" + storage.getCapacity();
+				data[i][3] = "" + storage.getReadSpeed();
+				data[i][4] = "" + storage.getWriteSpeed();
+				data[i][5] = "" + storage.getPrice();
+				data[i][6] = "" + storage.getUsage();
 			}
 			break;
 		case 5:
