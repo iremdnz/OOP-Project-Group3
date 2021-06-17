@@ -6,23 +6,25 @@ public class GraphicsCard {
 	}
 
 	private String brand, model, vendor;
-	private int capacity, price;
+	private int capacity, price, tdp;
 	private char usage;
 
-	public GraphicsCard(String brand, String model, String vendor, int capacity, int price, char usage) {
+	public GraphicsCard(String brand, String model, String vendor, int capacity, int tdp, int price, char usage) {
 		this.brand = brand;
 		this.model = model;
 		this.vendor = vendor;
 		this.capacity = capacity;
+		this.tdp = tdp;
 		this.price = price;
 		this.usage = usage;
 	}
 	
-	public GraphicsCard(String brand, String model, String vendor, String capacity, String price, String usage) {
+	public GraphicsCard(String brand, String model, String vendor, String capacity, String tdp, String price, String usage) {
 		this.brand = brand;
 	 	this.model = model;
 		this.vendor = vendor;
 		this.capacity = Integer.parseInt(capacity);
+		this.tdp = Integer.parseInt(tdp);
 		this.price = Integer.parseInt(price);
 		this.usage = usage.charAt(0);
 	}
@@ -73,6 +75,14 @@ public class GraphicsCard {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public int getTdp() {
+		return tdp;
+	}
+
+	public void setTdp(int tdp) {
+		this.tdp = tdp;
 	}
 
 }

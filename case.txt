@@ -13,3 +13,8 @@ Raijintek,Silenos PRO 3,750,1650,g
 Dark,Guardian PRO,750,1500,g
 ASUS,TUF GT301,650,1753,g
 ASUS,Rog Strix GX601,1000,6562,p
+Sharkoon,TG5 PRO,650,899,d
+Corsair,5000D Airflow,650,1753,g
+NZXT,H510,650,1300,d
+Thermaltake,AH T200,750,2542,g
+Corsair,Obsidian,1000,5693,p

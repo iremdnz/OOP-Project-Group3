@@ -55,9 +55,10 @@ public class Computer {
 					String model = splitWord[1];
 					String vendor = splitWord[2];
 					int capacity = Integer.valueOf(splitWord[3]);
-					int price = Integer.valueOf(splitWord[4]);
-					char usage = splitWord[5].charAt(0);
-					GraphicsCard gpuUnit = new GraphicsCard(brand, model, vendor, capacity, price, usage);
+					int price = Integer.valueOf(splitWord[5]);
+					char usage = splitWord[6].charAt(0);
+					int tdp = Integer.valueOf(splitWord[4]);
+					GraphicsCard gpuUnit = new GraphicsCard(brand, model, vendor, capacity, tdp, price, usage);
 					list.add(gpuUnit);
 				} else if (file.getName().equalsIgnoreCase("memory.txt")) {
 					String brand = splitWord[0];

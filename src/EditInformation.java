@@ -154,7 +154,7 @@ public class EditInformation extends JFrame {
 			texts[i].setText(EditCompFrame.mainTable.getModel().getValueAt(EditCompFrame.row, i).toString());
 		}
 
-		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
+		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "TDP", "Price", "Usage" };
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
 		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "Form Factor", "M.2", "PCIE", "Price",
 				"Usage" };
@@ -416,8 +416,9 @@ public class EditInformation extends JFrame {
 						gpu.setModel(texts[1].getText());
 						gpu.setVendor(texts[2].getText());
 						gpu.setCapacity(Integer.valueOf(texts[3].getText()));
-						gpu.setPrice(Integer.valueOf(texts[4].getText()));
-						gpu.setUsage(texts[5].getText().charAt(0));
+						gpu.setTdp(Integer.valueOf(texts[4].getText()));
+						gpu.setPrice(Integer.valueOf(texts[5].getText()));
+						gpu.setUsage(texts[6].getText().charAt(0));
 						int index = AdminPanel.computerDB.getDatabase().get("graphics_card").indexOf(gpu);
 						AdminPanel.computerDB.getDatabase().get("graphics_card").remove(gpu);
 						AdminPanel.computerDB.getDatabase().get("graphics_card").add(index, gpu);
@@ -546,7 +547,7 @@ public class EditInformation extends JFrame {
 					EditCompFrame.mainTable.setModel(EditCompFrame.model);
 
 				}
-
+				dispose();
 			}
 		});
 

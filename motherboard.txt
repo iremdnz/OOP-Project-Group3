@@ -1,20 +1,21 @@
-ASRock,Taichi,Intel Z490,LGA1200,ATX,true,3.0,5800,p
-ASUS,ROG Maximus,Intel Z590,LGA1200,ATX,true,4.0,5500,g
-MSI,MPG,Intel Z590,LGA1200,ATX,true,4.0,3800,g
-Gigabyte,Aorus Pro,Intel Z590,LGA1200,ATX,true,3.0,4000,p
+ASRock,Taichi,Intel Z490,1200,ATX,true,3.0,5800,p
+ASUS,ROG Maximus,Intel Z590,1200,ATX,true,4.0,5500,g
+MSI,MPG,Intel Z590,1200,ATX,true,4.0,3800,g
+Gigabyte,Aorus Pro,Intel Z590,1200,ATX,true,3.0,4000,p
 ASUS,ROG Strix,AMD B550,AM4,ATX,true,4.0,3200,p
 ASUS,TUF Gaming,AMD X570,AM4,ATX,true,4.0,3000,g
-MSI,MPG,Intel Z490,LGA1200,ATX,true,3.0,3000,p
-ASUS,ROG Strix,Intel B560,LGA1200,Mini ITX,true,4.0,2100,p
+MSI,MPG,Intel Z490,1200,ATX,true,3.0,3000,p
+ASUS,ROG Strix,Intel B560,1200,Mini ITX,true,4.0,2100,p
 MSI,MEG,AMD B550,AM4,ATX,true,4.0,3000,d
-ASUS,Prime,Intel Z590,LGA1200,Micro ATX,true,4.0,2150,g
+ASUS,Prime,Intel Z590,1200,Micro ATX,true,4.0,2150,g
 Gigabyte,Aorus Pro,AMD B550,AM4,ATX,true,4.0,2050,g
-MSI,MAG,Intel B365M,LGA1151,MicroATX,true,3.0,900,g
-ASUS,Prime,Intel H310,LGA1151,MicroATX,false,3.0,550,d
-Gigabyte,DS3H,Intel B365M,LGA1151,MicroATX,true,3.0,850,d
-Gigabyte,H410M-H,Intel H410M,LGA1200,MicroATX,true,3.0,600,d
-ASUS,Prime,Intel H410M,LGA1200,MicroATX,true,3.0,700,d
-ASUS,TUF Gaming,Intel B460M,LGA1200,MicroATX,true,3.0,1250,g
-MSI,MAG,Intel Z490,LGA1200,ATX,true,3.0,2200,g
+MSI,MAG,Intel B365M,1151,MicroATX,true,3.0,900,g
+ASUS,Prime,Intel H310,1151,MicroATX,false,3.0,550,d
+Gigabyte,DS3H,Intel B365M,1151,MicroATX,true,3.0,850,d
+Gigabyte,H410M-H,Intel H410M,1200,MicroATX,true,3.0,600,d
+ASUS,Prime,Intel H410M,1200,MicroATX,true,3.0,700,d
+ASUS,TUF Gaming,Intel B460M,1200,MicroATX,true,3.0,1250,g
+MSI,MAG,Intel Z490,1200,ATX,true,3.0,2200,g
 ASUS,Prime,AMD A320M,AM4,MicroATX,true,3.0,600,d
 Gigabyte,DS3H,AMD A520M,AM4,MicroATX,true,3.0,800,d
+ASUS,Prime TRX40-PRO,AMD ThreadRipper,sTRX4,ATX,true,4.0,7790,p

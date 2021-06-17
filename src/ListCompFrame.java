@@ -64,7 +64,7 @@ public class ListCompFrame extends JFrame {
 		String[][] memoryData = getData(AdminPanel.computerDB, 2);
 		memoryModel = new DefaultTableModel(memoryData, memoryTag);
 
-		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
+		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "TDP", "Price", "Usage" };
 		String[][] gpuData = getData(AdminPanel.computerDB, 1);
 		gpuModel = new DefaultTableModel(gpuData, gpuTag);
 
@@ -106,7 +106,7 @@ public class ListCompFrame extends JFrame {
 		switch (comp) {
 		case 1:
 			size = computerDB.getDatabase().get("graphics_card").size();
-			data = new String[size][6];
+			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
 				GraphicsCard gpu = (GraphicsCard) computerDB.getDatabase().get("graphics_card").get(i);
 
@@ -114,8 +114,9 @@ public class ListCompFrame extends JFrame {
 				data[i][1] = gpu.getModel();
 				data[i][2] = gpu.getVendor();
 				data[i][3] = "" + gpu.getCapacity();
-				data[i][4] = "" + gpu.getPrice();
-				data[i][5] = "" + gpu.getUsage();
+				data[i][4] = "" + gpu.getTdp();
+				data[i][5] = "" + gpu.getPrice();
+				data[i][6] = "" + gpu.getUsage();
 			}
 			break;
 		case 2:

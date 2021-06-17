@@ -48,7 +48,7 @@ public class DeleteCompFrame extends JFrame {
 		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
 		"Usage", "Remove"};
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage", "Remove"};
-		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage", "Remove"};
+		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "TDP", "Price", "Usage", "Remove"};
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage", "Remove"};
 		String[] storageTag = { "Brand", "Model", "Read Speed", "Write Speed", "Price", "Usage", "Remove"};
 		
@@ -100,7 +100,7 @@ public class DeleteCompFrame extends JFrame {
 			@Override
 	         public Class getColumnClass(int column) {
 				switch (column) {
-                case 6:
+                case 7:
                     return Boolean.class;
                 default:
                 	return String.class;
@@ -143,7 +143,7 @@ public class DeleteCompFrame extends JFrame {
 						@Override
 				         public Class getColumnClass(int column) {
 							switch (column) {
-			                case 6:
+			                case 7:
 			                    return Boolean.class;
 			                default:
 			                	return String.class;
@@ -247,7 +247,7 @@ public class DeleteCompFrame extends JFrame {
 				int selectedCount = 0;
 				
 				for (int i = 0; i < mainTable.getRowCount(); i++) {
-					if (String.valueOf(comboBox.getSelectedItem()).equalsIgnoreCase("graphics_card") && (Boolean) mainTable.getValueAt(i,6)) {
+					if (String.valueOf(comboBox.getSelectedItem()).equalsIgnoreCase("graphics_card") && (Boolean) mainTable.getValueAt(i,7)) {
 						selectedCount++;
 					}
 					else if (String.valueOf(comboBox.getSelectedItem()).equalsIgnoreCase("memory") && (Boolean) mainTable.getValueAt(i,8)) {
@@ -277,7 +277,7 @@ public class DeleteCompFrame extends JFrame {
 						if (String.valueOf(comboBox.getSelectedItem()).equalsIgnoreCase("graphics_card")) {
 
 							for (int i = 0; i < mainTable.getRowCount(); i++) {
-								if ((Boolean) mainTable.getValueAt(i,6)) {
+								if ((Boolean) mainTable.getValueAt(i,7)) {
 									
 									for (Object val : AdminPanel.computerDB.getDatabase().get("graphics_card")) {
 										GraphicsCard gpu = (GraphicsCard) val;
@@ -420,7 +420,7 @@ public class DeleteCompFrame extends JFrame {
 		switch (comp) {
 		case 1:
 			size = computerDB.getDatabase().get("graphics_card").size();
-			data = new Object[size][7];
+			data = new Object[size][8];
 			for (int i = 0; i < size; i++) {
 				GraphicsCard gpu = (GraphicsCard) computerDB.getDatabase().get("graphics_card").get(i);
 
@@ -428,9 +428,10 @@ public class DeleteCompFrame extends JFrame {
 				data[i][1] = gpu.getModel();
 				data[i][2] = gpu.getVendor();
 				data[i][3] = "" + gpu.getCapacity();
-				data[i][4] = "" + gpu.getPrice();
-				data[i][5] = "" + gpu.getUsage();
-				data[i][6] = false;
+				data[i][4] = "" + gpu.getTdp();
+				data[i][5] = "" + gpu.getPrice();
+				data[i][6] = "" + gpu.getUsage();
+				data[i][7] = false;
 			}
 			break;
 		case 2:

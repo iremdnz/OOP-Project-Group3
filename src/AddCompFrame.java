@@ -173,7 +173,7 @@ public class AddCompFrame extends JFrame {
 			}
 		}
 		
-		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "Price", "Usage" };
+		String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "TDP", "Price", "Usage" };
 		String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
 		String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "Form Factor", "M.2", "PCIE", "Price", "Usage" };
 		String[] solidTag = { "Brand", "Model", "Capacity","Read Speed", "Write Speed", "Price", "Usage", "Type", "Cooling S." };
@@ -253,7 +253,7 @@ public class AddCompFrame extends JFrame {
 				
 				if(isValid == true) {
 					if (selectedComp.equalsIgnoreCase("graphics_card")) {
-						GraphicsCard gpu = new GraphicsCard(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText());
+						GraphicsCard gpu = new GraphicsCard(texts[0].getText(),texts[1].getText(),texts[2].getText(),texts[3].getText(),texts[4].getText(),texts[5].getText(),texts[6].getText());
 						AdminPanel.computerDB.getDatabase().get("graphics_card").add(gpu);
 					} else if (selectedComp.equalsIgnoreCase("memory")) {
 						Memory memory = new Memory(texts[0].getText(),texts[1].getText(),texts[3].getText(), texts[4].getText(),texts[2].getText(),texts[5].getText(),texts[6].getText(),texts[7].getText());

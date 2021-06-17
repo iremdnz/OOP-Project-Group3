@@ -27,9 +27,12 @@ import javax.swing.JButton;
 public class ComponentSelection extends JFrame {
 
 	private JPanel contentPane;
-	//private static Computer computer;
+	// private static Computer computer;
 	public static Stack<Object> userChoices, tempChoices;
-
+	private int totalTdp = 0, gpuTdp = 0, cpuTdp = 0, caseTdp = 0;
+	private boolean gpuFlag = false, cpuFlag = false, caseFlag = false;
+	private MotherBoard mBoard = null;
+	
 	/**
 	 * Launch the application.
 	 * 
@@ -41,7 +44,7 @@ public class ComponentSelection extends JFrame {
 				try {
 					ComponentSelection frame = new ComponentSelection();
 					frame.setVisible(true);
- 				} catch (Exception e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -181,29 +184,66 @@ public class ComponentSelection extends JFrame {
 				}
 
 				if (!tempChoices.isEmpty()) {
-					tempChoices.pop();
+					Object tempElement = tempChoices.pop();
+					try {
+						Processor tempCpu = (Processor) tempElement;
+						tempCpu = null;
+					} catch (Exception e) {
+						tempChoices.push(tempElement);
+					}
 				}
+				
+				if((mBoard != null && mBoard.getSocket().equals(cpu.getSocket())) || mBoard == null) {
+					userChoices.push(cpu);
+					if (cpuFlag == true) {
+						totalTdp -= cpuTdp;
+					}
+					cpuFlag = true;
+					cpuTdp = cpu.getTdp();
+					totalTdp += cpuTdp;
+					// System.out.println("total: " + totalTdp + " cput: " + cpuTdp + " gput: " +
+					// gpuTdp);
+					if (caseTdp < totalTdp && gpuFlag == true && cpuFlag == true && caseFlag == true) {
+						totalTdp -= cpuTdp;
+						userChoices.pop();
+						while (!tempChoices.isEmpty()) {
+							userChoices.push(tempChoices.pop());
+						}
+						// System.out.println("Wrong cpu: " + userChoices.toString());
+						cpuFlag = false;
+						JOptionPane.showMessageDialog(contentPane, "Case's PSU is not enough!", "Warning",
+								JOptionPane.WARNING_MESSAGE);
+						dropList1.setSelectedIndex(-1);
+						compInformation.setVisible(false);
+					} else {
+						while (!tempChoices.isEmpty()) {
+							userChoices.push(tempChoices.pop());
+						}
 
-				userChoices.push(cpu);
+						/*
+						 * while(!userChoices.isEmpty()) { tempChoices.push(userChoices.pop()); }
+						 * 
+						 * while(!tempChoices.isEmpty()) { Object temp = tempChoices.pop();
+						 * System.out.println(temp); userChoices.push(temp); } System.out.println();
+						 */
 
-				while (!tempChoices.isEmpty()) {
-					userChoices.push(tempChoices.pop());
+						String isUnlocked = cpu.isUnlocked() ? "Yes" : "No";
+						String socket = cpu.getBrand().equals("AMD") ? cpu.getSocket() : "LGA" + cpu.getSocket();
+						String information = "Brand: " + cpu.getBrand() + "\nModel: " + cpu.getModel() + "\nCores/Threads: "
+								+ cpu.getCore() + "/" + cpu.getThread() + "\nSocket Type: " + socket + "\nClock Speed: "
+								+ cpu.getClockSpeed() + " GHz" + "\nTDP: " + cpu.getTdp() + " Watt" + "\nUnlocked: "
+								+ isUnlocked + "\nPrice (Avg.): " + cpu.getPrice() + " TL";
+						compInformation.setText(information);
+
+					}
 				}
-
-				/*
-				 * while(!userChoices.isEmpty()) { tempChoices.push(userChoices.pop()); }
-				 * 
-				 * while(!tempChoices.isEmpty()) { Object temp = tempChoices.pop();
-				 * System.out.println(temp); userChoices.push(temp); } System.out.println();
-				 */
-
-				String isUnlocked = cpu.isUnlocked() ? "Yes" : "No";
-				String socket = cpu.getBrand().equals("AMD") ? cpu.getSocket() : "LGA" + cpu.getSocket();
-				String information = "Brand: " + cpu.getBrand() + "\nModel: " + cpu.getModel() + "\nCores/Threads: "
-						+ cpu.getCore() + "/" + cpu.getThread() + "\nSocket Type: " + socket + "\nClock Speed: "
-						+ cpu.getClockSpeed() + " GHz" + "\nTDP: " + cpu.getTdp() + " Watt" + "\nUnlocked: "
-						+ isUnlocked + "\nPrice (Avg.): " + cpu.getPrice() + " TL";
-				compInformation.setText(information);
+				else {
+					JOptionPane.showMessageDialog(contentPane,
+							"Selected processor is incompatible with motherboard!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
+					dropList1.setSelectedIndex(-1);
+					compInformation.setVisible(false);
+				}
 			}
 		});
 
@@ -226,11 +266,27 @@ public class ComponentSelection extends JFrame {
 					}
 
 					if (!tempChoices.isEmpty()) {
-						tempChoices.pop();
+						Object tempElement = tempChoices.pop();
+						try {
+							MotherBoard tempMb = (MotherBoard) tempElement;
+							tempMb = null;
+						} catch (Exception e) {
+							tempChoices.push(tempElement);
+						}
 					}
 
-					userChoices.push(mb);
-
+					if (mb.getSocket().equals(((Processor) userChoices.peek()).getSocket())) {
+						userChoices.push(mb);
+						mBoard = mb;
+					} else {
+						mBoard = null;
+						JOptionPane.showMessageDialog(contentPane,
+								"Selected motherboard is incompatible with processor!", "Warning",
+								JOptionPane.WARNING_MESSAGE);
+						dropList2.setSelectedIndex(-1);
+						compInformation.setVisible(false);
+					}
+					
 					while (!tempChoices.isEmpty()) {
 						userChoices.push(tempChoices.pop());
 					}
@@ -241,6 +297,7 @@ public class ComponentSelection extends JFrame {
 							+ "\nM.2 SSD Support: " + m2Support + "\nPCIe Standart: " + mb.getPcieVersion()
 							+ "\nPrice (Avg.): " + mb.getPrice() + " TL";
 					compInformation.setText(information);
+
 				}
 			}
 		});
@@ -381,19 +438,49 @@ public class ComponentSelection extends JFrame {
 					}
 
 					if (!tempChoices.isEmpty()) {
-						tempChoices.pop();
+						Object tempElement = tempChoices.pop();
+						try {
+							GraphicsCard tempGpu = (GraphicsCard) tempElement;
+							tempGpu = null;
+						} catch (Exception e) {
+							tempChoices.push(tempElement);
+						}
 					}
-
+					// System.out.println("Wrong: " + userChoices.toString());
 					userChoices.push(gpu);
 
-					while (!tempChoices.isEmpty()) {
-						userChoices.push(tempChoices.pop());
+					if (gpuFlag == true) {
+						totalTdp -= gpuTdp;
+					}
+					gpuFlag = true;
+					gpuTdp = gpu.getTdp();
+					totalTdp += gpuTdp;
+					// System.out.println("total: " + totalTdp + " gput: " + gpuTdp + " cput: " +
+					// cpuTdp);
+					if (caseTdp < totalTdp && gpuFlag == true && cpuFlag == true && caseFlag == true) {
+						totalTdp -= gpuTdp;
+						userChoices.pop();
+						while (!tempChoices.isEmpty()) {
+							userChoices.push(tempChoices.pop());
+						}
+						// System.out.println("Wrong gpu: " + userChoices.toString());
+						gpuFlag = false;
+						JOptionPane.showMessageDialog(contentPane, "Case's PSU is not enough!", "Warning",
+								JOptionPane.WARNING_MESSAGE);
+						dropList6.setSelectedIndex(-1);
+						compInformation.setVisible(false);
+					} else {
+
+						while (!tempChoices.isEmpty()) {
+							userChoices.push(tempChoices.pop());
+						}
+
+						String information = "Brand: " + gpu.getBrand() + "\nVendor: " + gpu.getVendor() + "\nModel: "
+								+ gpu.getModel() + "\nVRAM Capacity: " + gpu.getCapacity() + " GB" + "\nTDP: "
+								+ gpu.getTdp() + " Watt" + "\nPrice (Avg.): " + gpu.getPrice() + " TL";
+						compInformation.setText(information);
 					}
 
-					String information = "Brand: " + gpu.getBrand() + "\nVendor: " + gpu.getVendor() + "\nModel: "
-							+ gpu.getModel() + "\nVRAM Capacity: " + gpu.getCapacity() + " GB" + "\nPrice (Avg.): "
-							+ gpu.getPrice() + " TL";
-					compInformation.setText(information);
 				}
 			}
 		});
@@ -421,15 +508,30 @@ public class ComponentSelection extends JFrame {
 					}
 
 					userChoices.push(compCase);
+					caseFlag = true;
+					caseTdp = compCase.getPsu();
+					if (caseTdp < totalTdp) {
+						userChoices.pop();
+						caseFlag = false;
+						while (!tempChoices.isEmpty()) {
+							userChoices.push(tempChoices.pop());
+						}
+						System.out.println("Wrong case: " + userChoices.toString());
+						JOptionPane.showMessageDialog(contentPane, "Case's PSU is not enough!", "Warning",
+								JOptionPane.WARNING_MESSAGE);
+						dropList7.setSelectedIndex(-1);
+						compInformation.setVisible(false);
+					} else {
+						while (!tempChoices.isEmpty()) {
+							userChoices.push(tempChoices.pop());
+						}
 
-					while (!tempChoices.isEmpty()) {
-						userChoices.push(tempChoices.pop());
+						String information = "Brand: " + compCase.getBrand() + "\nModel: " + compCase.getModel()
+								+ "\nPSU Unit: " + compCase.getPsu() + " Watt" + "\nPrice (Avg.): "
+								+ compCase.getPrice() + " TL";
+						compInformation.setText(information);
 					}
 
-					String information = "Brand: " + compCase.getBrand() + "\nModel: " + compCase.getModel()
-							+ "\nPSU Unit: " + compCase.getPsu() + " Watt" + "\nPrice (Avg.): " + compCase.getPrice()
-							+ " TL";
-					compInformation.setText(information);
 				}
 			}
 		});
