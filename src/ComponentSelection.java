@@ -33,28 +33,7 @@ public class ComponentSelection extends JFrame {
 	private boolean gpuFlag = false, cpuFlag = false, caseFlag = false;
 	private MotherBoard mBoard = null;
 	
-	/**
-	 * Launch the application.
-	 * 
-	 * 
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ComponentSelection frame = new ComponentSelection();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 * 
-	 */
+	
 	@SuppressWarnings("unchecked")
 	public ComponentSelection() {
 		setResizable(false);
@@ -70,14 +49,14 @@ public class ComponentSelection extends JFrame {
 		// System.out.println(computer.getDatabase().toString());
 
 		@SuppressWarnings("unchecked")
-		JComboBox dropList1 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("processor").toArray());
+		JComboBox dropList1 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("Processor").toArray());
 
 		dropList1.setSelectedIndex(-1);
 		dropList1.setBounds(134, 45, 225, 21);
 		contentPane.add(dropList1);
 
 		@SuppressWarnings("unchecked")
-		JComboBox dropList2 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("motherboard").toArray());
+		JComboBox dropList2 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("Motherboard").toArray());
 		dropList2.setSelectedIndex(-1);
 		dropList2.setBounds(134, 95, 225, 21);
 		contentPane.add(dropList2);
@@ -93,7 +72,7 @@ public class ComponentSelection extends JFrame {
 		dropList4.setBounds(134, 195, 225, 21);
 		contentPane.add(dropList4);
 
-		for (Object element : ComputerConfSelect.computer.getDatabase().get("storage").toArray()) {
+		for (Object element : ComputerConfSelect.computer.getDatabase().get("Storage").toArray()) {
 
 			Storage storageElement = (Storage) element;
 			if (storageElement.getReadSpeed() != 150) {
@@ -107,19 +86,19 @@ public class ComponentSelection extends JFrame {
 		dropList4.setSelectedIndex(-1);
 
 		@SuppressWarnings("unchecked")
-		JComboBox dropList5 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("memory").toArray());
+		JComboBox dropList5 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("Memory").toArray());
 		dropList5.setSelectedIndex(-1);
 		dropList5.setBounds(134, 245, 225, 21);
 		contentPane.add(dropList5);
 
 		@SuppressWarnings("unchecked")
-		JComboBox dropList6 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("graphics_card").toArray());
+		JComboBox dropList6 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("Graphics Card").toArray());
 		dropList6.setSelectedIndex(-1);
 		dropList6.setBounds(134, 295, 225, 21);
 		contentPane.add(dropList6);
 
 		@SuppressWarnings("unchecked")
-		JComboBox dropList7 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("case").toArray());
+		JComboBox dropList7 = new JComboBox(ComputerConfSelect.computer.getDatabase().get("Case").toArray());
 		dropList7.setSelectedIndex(-1);
 		dropList7.setBounds(134, 345, 225, 21);
 		contentPane.add(dropList7);
@@ -201,15 +180,14 @@ public class ComponentSelection extends JFrame {
 					cpuFlag = true;
 					cpuTdp = cpu.getTdp();
 					totalTdp += cpuTdp;
-					// System.out.println("total: " + totalTdp + " cput: " + cpuTdp + " gput: " +
-					// gpuTdp);
+				
 					if (caseTdp < totalTdp && gpuFlag == true && cpuFlag == true && caseFlag == true) {
 						totalTdp -= cpuTdp;
 						userChoices.pop();
 						while (!tempChoices.isEmpty()) {
 							userChoices.push(tempChoices.pop());
 						}
-						// System.out.println("Wrong cpu: " + userChoices.toString());
+			
 						cpuFlag = false;
 						JOptionPane.showMessageDialog(contentPane, "Case's PSU is not enough!", "Warning",
 								JOptionPane.WARNING_MESSAGE);
@@ -220,12 +198,7 @@ public class ComponentSelection extends JFrame {
 							userChoices.push(tempChoices.pop());
 						}
 
-						/*
-						 * while(!userChoices.isEmpty()) { tempChoices.push(userChoices.pop()); }
-						 * 
-						 * while(!tempChoices.isEmpty()) { Object temp = tempChoices.pop();
-						 * System.out.println(temp); userChoices.push(temp); } System.out.println();
-						 */
+					
 
 						String isUnlocked = cpu.isUnlocked() ? "Yes" : "No";
 						String socket = cpu.getBrand().equals("AMD") ? cpu.getSocket() : "LGA" + cpu.getSocket();
@@ -446,7 +419,6 @@ public class ComponentSelection extends JFrame {
 							tempChoices.push(tempElement);
 						}
 					}
-					// System.out.println("Wrong: " + userChoices.toString());
 					userChoices.push(gpu);
 
 					if (gpuFlag == true) {
@@ -455,15 +427,14 @@ public class ComponentSelection extends JFrame {
 					gpuFlag = true;
 					gpuTdp = gpu.getTdp();
 					totalTdp += gpuTdp;
-					// System.out.println("total: " + totalTdp + " gput: " + gpuTdp + " cput: " +
-					// cpuTdp);
+					
 					if (caseTdp < totalTdp && gpuFlag == true && cpuFlag == true && caseFlag == true) {
 						totalTdp -= gpuTdp;
 						userChoices.pop();
 						while (!tempChoices.isEmpty()) {
 							userChoices.push(tempChoices.pop());
 						}
-						// System.out.println("Wrong gpu: " + userChoices.toString());
+						
 						gpuFlag = false;
 						JOptionPane.showMessageDialog(contentPane, "Case's PSU is not enough!", "Warning",
 								JOptionPane.WARNING_MESSAGE);

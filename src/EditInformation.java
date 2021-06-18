@@ -173,16 +173,16 @@ public class EditInformation extends JFrame {
 		String selectedComp = String.valueOf(EditCompFrame.selectedItem);
 		Storage storageObject = null;
 
-		if (selectedComp.equalsIgnoreCase("graphics_card")) {
+		if (selectedComp.equalsIgnoreCase("Graphics Card")) {
 			EditCompFrame.chosenTag = gpuTag;
 
-		} else if (selectedComp.equalsIgnoreCase("memory")) {
+		} else if (selectedComp.equalsIgnoreCase("Memory")) {
 			EditCompFrame.chosenTag = memoryTag;
-		} else if (selectedComp.equalsIgnoreCase("processor")) {
+		} else if (selectedComp.equalsIgnoreCase("Processor")) {
 			EditCompFrame.chosenTag = processorTag;
-		} else if (selectedComp.equalsIgnoreCase("storage")) {
+		} else if (selectedComp.equalsIgnoreCase("Storage")) {
 			
-			for (Object val : AdminPanel.computerDB.getDatabase().get("storage")) {
+			for (Object val : AdminPanel.computerDB.getDatabase().get("Storage")) {
 				Storage storage = (Storage) val;
 
 				if (storage.getModel()
@@ -202,9 +202,9 @@ public class EditInformation extends JFrame {
 			} else {
 				EditCompFrame.chosenTag = solidTag;
 			}
-		} else if (selectedComp.equalsIgnoreCase("case")) {
+		} else if (selectedComp.equalsIgnoreCase("Case")) {
 			EditCompFrame.chosenTag = caseTag;
-		} else if (selectedComp.equalsIgnoreCase("motherboard")) {
+		} else if (selectedComp.equalsIgnoreCase("Motherboard")) {
 			EditCompFrame.chosenTag = motherboardTag;
 		}
 
@@ -214,7 +214,7 @@ public class EditInformation extends JFrame {
 			texts[i].setVisible(true);
 		}
 		
-		if (EditCompFrame.selectedItem.equalsIgnoreCase("storage")) {
+		if (EditCompFrame.selectedItem.equalsIgnoreCase("Storage")) {
 			if (storageObject.getReadSpeed() == 150) {
 				texts[7].setText("" + ((HardDrive)storageObject).getSpin());
 			}
@@ -289,9 +289,9 @@ public class EditInformation extends JFrame {
 
 					for (int i = 0; i < EditCompFrame.column; i++) {
 
-						if (EditCompFrame.selectedItem.equals("graphics_card") && i == 1) {
+						if (EditCompFrame.selectedItem.equals("Graphics Card") && i == 1) {
 
-							for (Object val : AdminPanel.computerDB.getDatabase().get("graphics_card")) {
+							for (Object val : AdminPanel.computerDB.getDatabase().get("Graphics Card")) {
 								GraphicsCard gpu = (GraphicsCard) val;
 
 								if (gpu.getModel().toString().equalsIgnoreCase(
@@ -306,8 +306,8 @@ public class EditInformation extends JFrame {
 								break;
 							}
 
-						} else if (EditCompFrame.selectedItem.equals("processor") && i == 1) {
-							for (Object val : AdminPanel.computerDB.getDatabase().get("processor")) {
+						} else if (EditCompFrame.selectedItem.equals("Processor") && i == 1) {
+							for (Object val : AdminPanel.computerDB.getDatabase().get("Processor")) {
 								Processor cpu = (Processor) val;
 
 								if (cpu.getModel().toString().equalsIgnoreCase(
@@ -321,9 +321,9 @@ public class EditInformation extends JFrame {
 								break;
 							}
 
-						} else if (EditCompFrame.selectedItem.equals("memory")) {
+						} else if (EditCompFrame.selectedItem.equals("Memory")) {
 
-							for (Object val : AdminPanel.computerDB.getDatabase().get("memory")) {
+							for (Object val : AdminPanel.computerDB.getDatabase().get("Memory")) {
 								Memory memory = (Memory) val;
 
 								if (memory.getBrand()
@@ -349,8 +349,8 @@ public class EditInformation extends JFrame {
 								break;
 							}
 
-						} else if (EditCompFrame.selectedItem.equals("case") && i == 1) {
-							for (Object val : AdminPanel.computerDB.getDatabase().get("case")) {
+						} else if (EditCompFrame.selectedItem.equals("Case") && i == 1) {
+							for (Object val : AdminPanel.computerDB.getDatabase().get("Case")) {
 								Case caseEntry = (Case) val;
 
 								if (caseEntry.getModel().toString().equalsIgnoreCase(
@@ -365,9 +365,9 @@ public class EditInformation extends JFrame {
 								break;
 							}
 
-						} else if (EditCompFrame.selectedItem.equals("motherboard")) {
+						} else if (EditCompFrame.selectedItem.equals("Motherboard")) {
 
-							for (Object val : AdminPanel.computerDB.getDatabase().get("motherboard")) {
+							for (Object val : AdminPanel.computerDB.getDatabase().get("Motherboard")) {
 								MotherBoard mobo = (MotherBoard) val;
 
 								if (mobo.getModel()
@@ -386,9 +386,9 @@ public class EditInformation extends JFrame {
 								break;
 							}
 
-						} else if (EditCompFrame.selectedItem.equals("storage")) {
+						} else if (EditCompFrame.selectedItem.equals("Storage")) {
 
-							for (Object val : AdminPanel.computerDB.getDatabase().get("storage")) {
+							for (Object val : AdminPanel.computerDB.getDatabase().get("Storage")) {
 								Storage storage = (Storage) val;
 
 								if (storage.getModel()
@@ -410,7 +410,7 @@ public class EditInformation extends JFrame {
 					}
 					
 					// System.out.println(computerDB.getDatabase().get(selectedItem).toString());
-					if (EditCompFrame.selectedItem.equals("graphics_card")) {
+					if (EditCompFrame.selectedItem.equals("Graphics Card")) {
 						GraphicsCard gpu = (GraphicsCard) EditObject;
 						gpu.setBrand(texts[0].getText());
 						gpu.setModel(texts[1].getText());
@@ -419,14 +419,14 @@ public class EditInformation extends JFrame {
 						gpu.setTdp(Integer.valueOf(texts[4].getText()));
 						gpu.setPrice(Integer.valueOf(texts[5].getText()));
 						gpu.setUsage(texts[6].getText().charAt(0));
-						int index = AdminPanel.computerDB.getDatabase().get("graphics_card").indexOf(gpu);
-						AdminPanel.computerDB.getDatabase().get("graphics_card").remove(gpu);
-						AdminPanel.computerDB.getDatabase().get("graphics_card").add(index, gpu);
+						int index = AdminPanel.computerDB.getDatabase().get("Graphics Card").indexOf(gpu);
+						AdminPanel.computerDB.getDatabase().get("Graphics Card").remove(gpu);
+						AdminPanel.computerDB.getDatabase().get("Graphics Card").add(index, gpu);
 						
 						String[][] data = EditCompFrame.getData(AdminPanel.computerDB, 1);
 						EditCompFrame.model = new DefaultTableModel(data, gpuTag);
 
-					} else if (EditCompFrame.selectedItem.equals("memory")) {
+					} else if (EditCompFrame.selectedItem.equals("Memory")) {
 
 						Memory memory = (Memory) EditObject;
 
@@ -438,16 +438,16 @@ public class EditInformation extends JFrame {
 						memory.setLatency(Integer.valueOf(texts[5].getText()));
 						memory.setPrice(Integer.valueOf(texts[6].getText()));
 						memory.setUsage(texts[7].getText().charAt(0));
-						int index = AdminPanel.computerDB.getDatabase().get("memory").indexOf(memory);
-						AdminPanel.computerDB.getDatabase().get("memory").remove(memory);
-						AdminPanel.computerDB.getDatabase().get("memory").add(index, memory);
+						int index = AdminPanel.computerDB.getDatabase().get("Memory").indexOf(memory);
+						AdminPanel.computerDB.getDatabase().get("Memory").remove(memory);
+						AdminPanel.computerDB.getDatabase().get("Memory").add(index, memory);
 						
 						String[][] data = EditCompFrame.getData(AdminPanel.computerDB, 2);
 						EditCompFrame.model = new DefaultTableModel(data, memoryTag);
 
 					}
 
-					else if (EditCompFrame.selectedItem.equals("motherboard")) {
+					else if (EditCompFrame.selectedItem.equals("Motherboard")) {
 
 						MotherBoard mobo = (MotherBoard) EditObject;
 						mobo.setBrand(texts[0].getText());
@@ -459,16 +459,16 @@ public class EditInformation extends JFrame {
 						mobo.setPcieVersion(Double.parseDouble(texts[6].getText()));
 						mobo.setPrice(Integer.valueOf(texts[7].getText()));
 						mobo.setUsage(texts[8].getText().charAt(0));
-						int index = AdminPanel.computerDB.getDatabase().get("motherboard").indexOf(mobo);
-						AdminPanel.computerDB.getDatabase().get("motherboard").remove(mobo);
-						AdminPanel.computerDB.getDatabase().get("motherboard").add(index, mobo);
+						int index = AdminPanel.computerDB.getDatabase().get("Motherboard").indexOf(mobo);
+						AdminPanel.computerDB.getDatabase().get("Motherboard").remove(mobo);
+						AdminPanel.computerDB.getDatabase().get("Motherboard").add(index, mobo);
 						
 						String[][] data = EditCompFrame.getData(AdminPanel.computerDB, 6);
 						EditCompFrame.model = new DefaultTableModel(data, motherboardTag);
 
 					}
 
-					else if (EditCompFrame.selectedItem.equals("storage")) {
+					else if (EditCompFrame.selectedItem.equals("Storage")) {
 
 						Storage storage = (Storage) EditObject;
 						
@@ -500,16 +500,16 @@ public class EditInformation extends JFrame {
 							ssd.setHasCoolingSys(Boolean.parseBoolean(texts[8].getText()));
 							storage = ssd;
 						}
-						int index = AdminPanel.computerDB.getDatabase().get("storage").indexOf(storage);
-						AdminPanel.computerDB.getDatabase().get("storage").remove(storage);
-						AdminPanel.computerDB.getDatabase().get("storage").add(index, storage);
+						int index = AdminPanel.computerDB.getDatabase().get("Storage").indexOf(storage);
+						AdminPanel.computerDB.getDatabase().get("Storage").remove(storage);
+						AdminPanel.computerDB.getDatabase().get("Storage").add(index, storage);
 						
 						String[][] data = EditCompFrame.getData(AdminPanel.computerDB, 4);
 						EditCompFrame.model = new DefaultTableModel(data, storageTag);
 						
 					}
 
-					else if (EditCompFrame.selectedItem.equals("processor")) {
+					else if (EditCompFrame.selectedItem.equals("Processor")) {
 
 						Processor cpu = (Processor) EditObject;
 						cpu.setBrand(texts[0].getText());
@@ -522,23 +522,23 @@ public class EditInformation extends JFrame {
 						cpu.setUnlocked(Boolean.parseBoolean(texts[7].getText()));
 						cpu.setPrice(Integer.valueOf(texts[8].getText()));
 						cpu.setUsage(texts[9].getText().charAt(0));
-						int index = AdminPanel.computerDB.getDatabase().get("processor").indexOf(cpu);
-						AdminPanel.computerDB.getDatabase().get("processor").remove(cpu);
-						AdminPanel.computerDB.getDatabase().get("processor").add(index, cpu);
+						int index = AdminPanel.computerDB.getDatabase().get("Processor").indexOf(cpu);
+						AdminPanel.computerDB.getDatabase().get("Processor").remove(cpu);
+						AdminPanel.computerDB.getDatabase().get("Processor").add(index, cpu);
 						
 						String[][] data = EditCompFrame.getData(AdminPanel.computerDB, 3);
 						EditCompFrame.model = new DefaultTableModel(data, processorTag);
 					}
 
-					else if (EditCompFrame.selectedItem.equals("case")) {
+					else if (EditCompFrame.selectedItem.equals("Case")) {
 						Case cse = (Case) EditObject;
 						cse.setBrand(texts[0].getText());
 						cse.setModel(texts[1].getText());
 						cse.setPsu(Integer.valueOf(texts[2].getText()));
 						cse.setUsage(texts[3].getText().charAt(0));
-						int index = AdminPanel.computerDB.getDatabase().get("case").indexOf(cse);
-						AdminPanel.computerDB.getDatabase().get("case").remove(cse);
-						AdminPanel.computerDB.getDatabase().get("case").add(index, cse);
+						int index = AdminPanel.computerDB.getDatabase().get("Case").indexOf(cse);
+						AdminPanel.computerDB.getDatabase().get("Case").remove(cse);
+						AdminPanel.computerDB.getDatabase().get("Case").add(index, cse);
 						
 						String[][] data = EditCompFrame.getData(AdminPanel.computerDB, 5);
 						EditCompFrame.model = new DefaultTableModel(data, caseTag);

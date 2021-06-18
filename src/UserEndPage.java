@@ -34,7 +34,7 @@ public class UserEndPage extends JFrame {
 			public void run() {
 				try {
 					UserEndPage frame = new UserEndPage();
-					frame.setVisible(true);
+			 		frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -136,15 +136,14 @@ public class UserEndPage extends JFrame {
 
 				       // Writes string to the file
 				       output.write(data);
-				       System.out.println("Data is written to the file.");
-
+				     
 				       // Closes the writer
 				       output.close();
 				     }
 				     catch (Exception e1) {
 				       e1.getStackTrace();
 				     }
-				 JOptionPane.showMessageDialog(contentPane, "Data is written to the file.", "Finish Info", JOptionPane.INFORMATION_MESSAGE);
+				 JOptionPane.showMessageDialog(contentPane, "The selected components has been written in a .txt file on your desktop", "Finish Info", JOptionPane.INFORMATION_MESSAGE);
 				 System.exit(NORMAL);
 			}
 		});

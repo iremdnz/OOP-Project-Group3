@@ -27,11 +27,11 @@ public class EditCompFrame extends JFrame {
 
 	public EditCompFrame() {
 		setResizable(false);
-
+		setTitle(WelcomeScreen.title);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		 contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -62,38 +62,38 @@ public class EditCompFrame extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 
 				String selectedComp = String.valueOf(comboBox.getSelectedItem());
-				if (selectedComp.equalsIgnoreCase("graphics_card")) {
+				if (selectedComp.equalsIgnoreCase("Graphics Card")) {
 					String[] gpuTag = { "Brand", "Model", "Vendor", "Capacity", "TDP", "Price", "Usage" };
 					String[][] gpuData = getData(AdminPanel.computerDB, 1);
 					DefaultTableModel gpuModel = new DefaultTableModel(gpuData, gpuTag);
 					mainTable.setModel(gpuModel);
 					
-				} else if (selectedComp.equalsIgnoreCase("memory")) {
+				} else if (selectedComp.equalsIgnoreCase("Memory")) {
 					String[] memoryTag = { "Brand", "Model", "Type", "Speed", "Capacity", "Latency", "Price", "Usage" };
 					String[][] memoryData = getData(AdminPanel.computerDB, 2);
 					DefaultTableModel memoryModel = new DefaultTableModel(memoryData, memoryTag);
 					mainTable.setModel(memoryModel);
 					
-				} else if (selectedComp.equalsIgnoreCase("processor")) {
+				} else if (selectedComp.equalsIgnoreCase("Processor")) {
 					String[] processorTag = { "Brand", "Model", "Core", "Thread", "Socket", "Clockspeed", "TDP", "isUnlocked",
 							"Price", "Usage" };
 					String[][] processorData = getData(AdminPanel.computerDB, 3);
 					DefaultTableModel cpuModel = new DefaultTableModel(processorData, processorTag);
 					mainTable.setModel(cpuModel);
 					
-				} else if (selectedComp.equalsIgnoreCase("storage")) {
+				} else if (selectedComp.equalsIgnoreCase("Storage")) {
 					String[] storageTag = { "Brand", "Model", "Capacity", "Read Speed", "Write Speed", "Price", "Usage" };
 					String[][] storageData = getData(AdminPanel.computerDB, 4);
 					DefaultTableModel storageModel = new DefaultTableModel(storageData, storageTag);
 					mainTable.setModel(storageModel);
 					
-				} else if (selectedComp.equalsIgnoreCase("case")) {
+				} else if (selectedComp.equalsIgnoreCase("Case")) {
 					String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
 					String[][] caseData = getData(AdminPanel.computerDB, 5);
 					DefaultTableModel caseModel = new DefaultTableModel(caseData, caseTag);
 					mainTable.setModel(caseModel);
 					
-				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
+				} else if (selectedComp.equalsIgnoreCase("Motherboard")) {
 					String[] motherboardTag = { "Brand", "Model", "Chipset", "Socket", "formFactor", "M.2 Support", "PCIE", "Price",
 					"Usage" };
 					String[][] motherboardData = getData(AdminPanel.computerDB, 6);
@@ -125,10 +125,10 @@ public class EditCompFrame extends JFrame {
 
 		switch (comp) {
 		case 1:
-			size = computerDB.getDatabase().get("graphics_card").size();
+			size = computerDB.getDatabase().get("Graphics Card").size();
 			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
-				GraphicsCard gpu = (GraphicsCard) computerDB.getDatabase().get("graphics_card").get(i);
+				GraphicsCard gpu = (GraphicsCard) computerDB.getDatabase().get("Graphics Card").get(i);
 
 				data[i][0] = gpu.getBrand();
 				data[i][1] = gpu.getModel();
@@ -140,10 +140,10 @@ public class EditCompFrame extends JFrame {
 			}
 			break;
 		case 2:
-			size = computerDB.getDatabase().get("memory").size();
+			size = computerDB.getDatabase().get("Memory").size();
 			data = new String[size][8];
 			for (int i = 0; i < size; i++) {
-				Memory memory = (Memory) computerDB.getDatabase().get("memory").get(i);
+				Memory memory = (Memory) computerDB.getDatabase().get("Memory").get(i);
 
 				data[i][0] = memory.getBrand();
 				data[i][1] = memory.getModel();
@@ -156,10 +156,10 @@ public class EditCompFrame extends JFrame {
 			}
 			break;
 		case 3:
-			size = computerDB.getDatabase().get("processor").size();
+			size = computerDB.getDatabase().get("Processor").size();
 			data = new String[size][10];
 			for (int i = 0; i < size; i++) {
-				Processor cpu = (Processor) computerDB.getDatabase().get("processor").get(i);
+				Processor cpu = (Processor) computerDB.getDatabase().get("Processor").get(i);
 
 				data[i][0] = cpu.getBrand();
 				data[i][1] = cpu.getModel();
@@ -174,10 +174,10 @@ public class EditCompFrame extends JFrame {
 			}
 			break;
 		case 4:
-			size = computerDB.getDatabase().get("storage").size();
+			size = computerDB.getDatabase().get("Storage").size();
 			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
-				Storage storage = (Storage) computerDB.getDatabase().get("storage").get(i);
+				Storage storage = (Storage) computerDB.getDatabase().get("Storage").get(i);
 
 				data[i][0] = storage.getBrand();
 				data[i][1] = storage.getModel();
@@ -189,10 +189,10 @@ public class EditCompFrame extends JFrame {
 			}
 			break;
 		case 5:
-			size = computerDB.getDatabase().get("case").size();
+			size = computerDB.getDatabase().get("Case").size();
 			data = new String[size][5];
 			for (int i = 0; i < size; i++) {
-				Case caseObject = (Case) computerDB.getDatabase().get("case").get(i);
+				Case caseObject = (Case) computerDB.getDatabase().get("Case").get(i);
 
 				data[i][0] = caseObject.getBrand();
 				data[i][1] = caseObject.getModel();
@@ -202,10 +202,10 @@ public class EditCompFrame extends JFrame {
 			}
 			break;
 		case 6:
-			size = computerDB.getDatabase().get("motherboard").size();
+			size = computerDB.getDatabase().get("Motherboard").size();
 			data = new String[size][9];
 			for (int i = 0; i < size; i++) {
-				MotherBoard mobo = (MotherBoard) computerDB.getDatabase().get("motherboard").get(i);
+				MotherBoard mobo = (MotherBoard) computerDB.getDatabase().get("Motherboard").get(i);
 
 				data[i][0] = mobo.getBrand();
 				data[i][1] = mobo.getModel();

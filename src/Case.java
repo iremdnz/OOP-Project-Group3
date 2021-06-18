@@ -13,7 +13,7 @@ public class Case {
 
 	public Case(String brand, String model, int psu, int price, char usage) {
 		this.brand = brand;
-		this.model = model;
+	 	this.model = model;
 		this.psu = psu;
 		this.price = price;
 		this.usage = usage;

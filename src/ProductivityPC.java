@@ -13,63 +13,63 @@ public class ProductivityPC extends Computer implements PCPreference {
 		separateCase();
 	}
 	
-	public ArrayList<Object> separateGPU() {
+	public void separateGPU() {
 		ArrayList<GraphicsCard> deleteGpu = new ArrayList<>();
 
-		for (Object gpu : getDatabase().get("graphics_card")) {
+		for (Object gpu : getDatabase().get("Graphics Card")) {
 			if (((GraphicsCard) gpu).getUsage() != 'p') {
 				deleteGpu.add((GraphicsCard) gpu);
 			}
 		}
 
-		for (GraphicsCard gpu : deleteGpu) {
-			getDatabase().get("graphics_card").remove(gpu);
+	 	for (GraphicsCard gpu : deleteGpu) {
+			getDatabase().get("Graphics Card").remove(gpu);
 		}
-		return null;
+	
 	}
 
-	public ArrayList<Object> separateCPU() {
+	public void separateCPU() {
 		ArrayList<Processor> deleteCpu = new ArrayList<>();
 
-		for (Object cpu : getDatabase().get("processor")) {
+		for (Object cpu : getDatabase().get("Processor")) {
 			if (((Processor) cpu).getUsage() != 'p') {
 				deleteCpu.add((Processor) cpu);
 			}
 		}
 
 		for (Processor cpu : deleteCpu) {
-			getDatabase().get("processor").remove(cpu);
+			getDatabase().get("Processor").remove(cpu);
 		}
-		return null;
+		
 	}
 
-	public ArrayList<Object> separateMB() {
+	public void separateMB() {
 		ArrayList<MotherBoard> deleteMB = new ArrayList<>();
 
-		for (Object mb : getDatabase().get("motherboard")) {
+		for (Object mb : getDatabase().get("Motherboard")) {
 			if (((MotherBoard) mb).getUsage() != 'p') {
 				deleteMB.add((MotherBoard) mb);
 			}
 		}
 
 		for (MotherBoard mb : deleteMB) {
-			getDatabase().get("motherboard").remove(mb);
+			getDatabase().get("Motherboard").remove(mb);
 		}
-		return null;
+		
 	}
 
-	public ArrayList<Object> separateCase() {
+	public void separateCase() {
 		ArrayList<Case> deleteCase = new ArrayList<>();
 
-		for (Object casee : getDatabase().get("case")) {
+		for (Object casee : getDatabase().get("Case")) {
 			if (((Case) casee).getUsage() != 'p') {
 				deleteCase.add((Case) casee);
 			}
 		}
 
 		for (Case casee : deleteCase) {
-			getDatabase().get("case").remove(casee);
+			getDatabase().get("Case").remove(casee);
 		}
-		return null;
+	
 	}
 }

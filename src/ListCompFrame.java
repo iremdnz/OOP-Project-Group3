@@ -18,9 +18,11 @@ public class ListCompFrame extends JFrame {
 	private JPanel contentPane;
 	public static JTable mainTable;
 	public static DefaultTableModel caseModel, cpuModel, mbModel, memoryModel, gpuModel, storageModel;
+	public static JComboBox comboBox;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ListCompFrame() {
+		setTitle(WelcomeScreen.title);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 712, 465);
@@ -34,7 +36,7 @@ public class ListCompFrame extends JFrame {
 		compTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(compTypeLabel);
 
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBounds(214, 27, 239, 29);
 		contentPane.add(comboBox);
 
@@ -72,7 +74,7 @@ public class ListCompFrame extends JFrame {
 		String[][] caseData = getData(AdminPanel.computerDB, 5);
 		caseModel = new DefaultTableModel(caseData, caseTag);
 
-		String[] storageTag = { "Brand", "Model", "Capacity","Read Speed", "Write Speed", "Price", "Usage" };
+		String[] storageTag = { "Brand", "Model", "Capacity", "Read Speed", "Write Speed", "Price", "Usage" };
 		String[][] storageData = getData(AdminPanel.computerDB, 4);
 		storageModel = new DefaultTableModel(storageData, storageTag);
 
@@ -81,17 +83,17 @@ public class ListCompFrame extends JFrame {
 
 				String selectedComp = String.valueOf(comboBox.getSelectedItem());
 
-				if (selectedComp.equalsIgnoreCase("graphics_card")) {
+				if (selectedComp.equalsIgnoreCase("Graphics Card")) {
 					mainTable.setModel(gpuModel);
-				} else if (selectedComp.equalsIgnoreCase("memory")) {
+				} else if (selectedComp.equalsIgnoreCase("Memory")) {
 					mainTable.setModel(memoryModel);
-				} else if (selectedComp.equalsIgnoreCase("processor")) {
+				} else if (selectedComp.equalsIgnoreCase("Processor")) {
 					mainTable.setModel(cpuModel);
-				} else if (selectedComp.equalsIgnoreCase("storage")) {
+				} else if (selectedComp.equalsIgnoreCase("Storage")) {
 					mainTable.setModel(storageModel);
-				} else if (selectedComp.equalsIgnoreCase("case")) {
+				} else if (selectedComp.equalsIgnoreCase("Case")) {
 					mainTable.setModel(caseModel);
-				} else if (selectedComp.equalsIgnoreCase("motherboard")) {
+				} else if (selectedComp.equalsIgnoreCase("Motherboard")) {
 					mainTable.setModel(mbModel);
 				}
 
@@ -105,10 +107,10 @@ public class ListCompFrame extends JFrame {
 
 		switch (comp) {
 		case 1:
-			size = computerDB.getDatabase().get("graphics_card").size();
+			size = computerDB.getDatabase().get("Graphics Card").size();
 			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
-				GraphicsCard gpu = (GraphicsCard) computerDB.getDatabase().get("graphics_card").get(i);
+				GraphicsCard gpu = (GraphicsCard) computerDB.getDatabase().get("Graphics Card").get(i);
 
 				data[i][0] = gpu.getBrand();
 				data[i][1] = gpu.getModel();
@@ -120,10 +122,10 @@ public class ListCompFrame extends JFrame {
 			}
 			break;
 		case 2:
-			size = computerDB.getDatabase().get("memory").size();
+			size = computerDB.getDatabase().get("Memory").size();
 			data = new String[size][8];
 			for (int i = 0; i < size; i++) {
-				Memory memory = (Memory) computerDB.getDatabase().get("memory").get(i);
+				Memory memory = (Memory) computerDB.getDatabase().get("Memory").get(i);
 
 				data[i][0] = memory.getBrand();
 				data[i][1] = memory.getModel();
@@ -136,10 +138,10 @@ public class ListCompFrame extends JFrame {
 			}
 			break;
 		case 3:
-			size = computerDB.getDatabase().get("processor").size();
+			size = computerDB.getDatabase().get("Processor").size();
 			data = new String[size][10];
 			for (int i = 0; i < size; i++) {
-				Processor cpu = (Processor) computerDB.getDatabase().get("processor").get(i);
+				Processor cpu = (Processor) computerDB.getDatabase().get("Processor").get(i);
 
 				data[i][0] = cpu.getBrand();
 				data[i][1] = cpu.getModel();
@@ -154,10 +156,10 @@ public class ListCompFrame extends JFrame {
 			}
 			break;
 		case 4:
-			size = computerDB.getDatabase().get("storage").size();
+			size = computerDB.getDatabase().get("Storage").size();
 			data = new String[size][7];
 			for (int i = 0; i < size; i++) {
-				Storage storage = (Storage) computerDB.getDatabase().get("storage").get(i);
+				Storage storage = (Storage) computerDB.getDatabase().get("Storage").get(i);
 
 				data[i][0] = storage.getBrand();
 				data[i][1] = storage.getModel();
@@ -169,10 +171,10 @@ public class ListCompFrame extends JFrame {
 			}
 			break;
 		case 5:
-			size = computerDB.getDatabase().get("case").size();
+			size = computerDB.getDatabase().get("Case").size();
 			data = new String[size][5];
 			for (int i = 0; i < size; i++) {
-				Case caseObject = (Case) computerDB.getDatabase().get("case").get(i);
+				Case caseObject = (Case) computerDB.getDatabase().get("Case").get(i);
 
 				data[i][0] = caseObject.getBrand();
 				data[i][1] = caseObject.getModel();
@@ -182,10 +184,10 @@ public class ListCompFrame extends JFrame {
 			}
 			break;
 		case 6:
-			size = computerDB.getDatabase().get("motherboard").size();
+			size = computerDB.getDatabase().get("Motherboard").size();
 			data = new String[size][9];
 			for (int i = 0; i < size; i++) {
-				MotherBoard mobo = (MotherBoard) computerDB.getDatabase().get("motherboard").get(i);
+				MotherBoard mobo = (MotherBoard) computerDB.getDatabase().get("Motherboard").get(i);
 
 				data[i][0] = mobo.getBrand();
 				data[i][1] = mobo.getModel();

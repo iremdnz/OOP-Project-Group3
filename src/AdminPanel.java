@@ -34,7 +34,7 @@ public class AdminPanel extends JFrame {
 	public AdminPanel() {
 		setResizable(false);
 		computerDB = new Computer();
-		
+		 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 712, 465);
 		contentPane = new JPanel();
