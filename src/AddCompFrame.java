@@ -31,12 +31,12 @@ public class AddCompFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel compTypeLabel = new JLabel("Component Type: ");
-		compTypeLabel.setBounds(24, 49, 150, 49);
+		compTypeLabel.setBounds(19, 14, 183, 49);
 		compTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(compTypeLabel);
 
 		JComboBox<String> comboBox = new JComboBox();
-		comboBox.setBounds(184, 63, 321, 26);
+		comboBox.setBounds(214, 27, 239, 29);
 		contentPane.add(comboBox);
 
 		JLabel label1 = new JLabel();
