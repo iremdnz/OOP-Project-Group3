@@ -30,131 +30,131 @@ public class AddCompFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Component Type: ");
-		lblNewLabel.setBounds(24, 19, 150, 49);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		contentPane.add(lblNewLabel);
+		JLabel compTypeLabel = new JLabel("Component Type: ");
+		compTypeLabel.setBounds(24, 49, 150, 49);
+		compTypeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		contentPane.add(compTypeLabel);
 
 		JComboBox<String> comboBox = new JComboBox();
-		comboBox.setBounds(184, 33, 321, 26);
+		comboBox.setBounds(184, 63, 321, 26);
 		contentPane.add(comboBox);
 
 		JLabel label1 = new JLabel();
 		label1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label1.setBounds(43, 105, 97, 26);
+		label1.setBounds(43, 135, 97, 26);
 		contentPane.add(label1);
 		label1.setVisible(false);
 
 		JLabel label2 = new JLabel();
 		label2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label2.setBounds(43, 153, 97, 26);
+		label2.setBounds(43, 183, 97, 26);
 		contentPane.add(label2);
 		label2.setVisible(false);
 
 		JLabel label3 = new JLabel();
 		label3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label3.setBounds(43, 201, 97, 26);
+		label3.setBounds(43, 231, 97, 26);
 		contentPane.add(label3);
 		label3.setVisible(false);
 
 		JLabel label4 = new JLabel();
 		label4.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label4.setBounds(43, 249, 97, 26);
+		label4.setBounds(43, 279, 97, 26);
 		contentPane.add(label4);
 		label4.setVisible(false);
 
 		JLabel label5 = new JLabel();
 		label5.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label5.setBounds(43, 297, 97, 26);
+		label5.setBounds(43, 327, 97, 26);
 		contentPane.add(label5);
 		label5.setVisible(false);
 
 		JLabel label6 = new JLabel();
 		label6.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label6.setBounds(376, 105, 89, 26);
+		label6.setBounds(376, 135, 89, 26);
 		contentPane.add(label6);
 		label6.setVisible(false);
 
 		JLabel label7 = new JLabel();
 		label7.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label7.setBounds(376, 153, 89, 26);
+		label7.setBounds(376, 183, 89, 26);
 		contentPane.add(label7);
 		label7.setVisible(false);
 
 		JLabel label8 = new JLabel();
 		label8.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label8.setBounds(376, 201, 89, 26);
+		label8.setBounds(376, 231, 89, 26);
 		contentPane.add(label8);
 		label8.setVisible(false);
 
 		JLabel label9 = new JLabel();
 		label9.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label9.setBounds(376, 249, 89, 26);
+		label9.setBounds(376, 279, 89, 26);
 		contentPane.add(label9);
 		label9.setVisible(false);
 
 		JLabel label10 = new JLabel();
 		label10.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		label10.setBounds(376, 297, 89, 26);
+		label10.setBounds(376, 327, 89, 26);
 		contentPane.add(label10);
 		label10.setVisible(false);
 
 		text1 = new JTextField();
-		text1.setBounds(139, 105, 156, 26);
+		text1.setBounds(139, 135, 156, 26);
 		contentPane.add(text1);
 		text1.setColumns(10);
 		text1.setVisible(false);
 
 		text2 = new JTextField();
-		text2.setBounds(139, 153, 156, 26);
+		text2.setBounds(139, 183, 156, 26);
 		contentPane.add(text2);
 		text2.setColumns(10);
 		text2.setVisible(false);
-
-		text3 = new JTextField();
-		text3.setBounds(139, 201, 156, 26);
-		contentPane.add(text3);
-		text3.setColumns(10);
-		text3.setVisible(false);
+		
+				text3 = new JTextField();
+				text3.setBounds(139, 231, 156, 26);
+				contentPane.add(text3);
+				text3.setColumns(10);
+				text3.setVisible(false);
 
 		text4 = new JTextField();
-		text4.setBounds(139, 249, 156, 26);
+		text4.setBounds(139, 279, 156, 26);
 		contentPane.add(text4);
 		text4.setColumns(10);
 		text4.setVisible(false);
 
 		text5 = new JTextField();
-		text5.setBounds(139, 297, 156, 26);
+		text5.setBounds(139, 327, 156, 26);
 		contentPane.add(text5);
 		text5.setColumns(10);
 		text5.setVisible(false);
 
 		text6 = new JTextField();
-		text6.setBounds(468, 105, 156, 26);
+		text6.setBounds(468, 135, 156, 26);
 		contentPane.add(text6);
 		text6.setColumns(10);
 		text6.setVisible(false);
 
 		text7 = new JTextField();
-		text7.setBounds(468, 153, 156, 26);
+		text7.setBounds(468, 183, 156, 26);
 		contentPane.add(text7);
 		text7.setColumns(10);
 		text7.setVisible(false);
 
 		text8 = new JTextField();
-		text8.setBounds(468, 201, 156, 26);
+		text8.setBounds(468, 231, 156, 26);
 		contentPane.add(text8);
 		text8.setColumns(10);
 		text8.setVisible(false);
 
 		text9 = new JTextField();
-		text9.setBounds(468, 249, 156, 26);
+		text9.setBounds(468, 279, 156, 26);
 		contentPane.add(text9);
 		text9.setColumns(10);
 		text9.setVisible(false);
 
 		text10 = new JTextField();
-		text10.setBounds(468, 297, 156, 26);
+		text10.setBounds(468, 327, 156, 26);
 		contentPane.add(text10);
 		text10.setColumns(10);
 		text10.setVisible(false);
@@ -183,8 +183,8 @@ public class AddCompFrame extends JFrame {
 				"Price", "Usage" };
 		String[] caseTag = { "Brand", "Model", "PSU", "Price", "Usage" };
 
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton addButton = new JButton("Add");
+		addButton.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -325,10 +325,10 @@ public class AddCompFrame extends JFrame {
 			}
 		});
 
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnNewButton.setBounds(535, 359, 89, 26);
-		btnNewButton.setVisible(false);
-		contentPane.add(btnNewButton);
+		addButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		addButton.setBounds(535, 389, 89, 26);
+		addButton.setVisible(false);
+		contentPane.add(addButton);
 		
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -363,7 +363,7 @@ public class AddCompFrame extends JFrame {
 					texts[i].setVisible(true);
 				}
 
-				btnNewButton.setVisible(true);
+				addButton.setVisible(true);
 			}
 		});
 	}

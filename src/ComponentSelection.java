@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -22,6 +23,7 @@ import java.awt.event.ItemEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ComponentSelection extends JFrame {
@@ -138,9 +140,9 @@ public class ComponentSelection extends JFrame {
 		caseLabel.setBounds(20, 345, 93, 21);
 		contentPane.add(caseLabel);
 
-		JLabel compIcon = new JLabel("COMPONENT ICON");
+		JLabel compIcon = new JLabel("");
 		compIcon.setHorizontalAlignment(SwingConstants.CENTER);
-		compIcon.setBounds(442, 24, 135, 135);
+		compIcon.setBounds(442, 24, 150, 135);
 		contentPane.add(compIcon);
 
 		Color customColor = new Color(238, 238, 238);
@@ -149,7 +151,7 @@ public class ComponentSelection extends JFrame {
 		compInformation.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		compInformation.setEditable(false);
 		compInformation.setVisible(false);
-		compInformation.setBounds(381, 174, 304, 170);
+		compInformation.setBounds(381, 200, 304, 170);
 		contentPane.add(compInformation);
 
 		dropList1.addActionListener(new ActionListener() {
@@ -157,6 +159,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				Processor cpu = (Processor) dropList1.getSelectedItem();
+				
+				ImageIcon cpuIcon = new ImageIcon("src/img/cpu/" + cpu.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(cpuIcon);
 
 				while (!userChoices.isEmpty()) {
 					tempChoices.push(userChoices.pop());
@@ -225,6 +230,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				MotherBoard mb = (MotherBoard) dropList2.getSelectedItem();
+				
+				ImageIcon mbIcon = new ImageIcon("src/img/mb/" + mb.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(mbIcon);
 
 				if (userChoices.size() < 1) {
 					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
@@ -280,6 +288,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				HardDrive disk = (HardDrive) dropList3.getSelectedItem();
+				
+				ImageIcon hddIcon = new ImageIcon("src/img/storage/" + disk.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(hddIcon);
 
 				if (userChoices.size() < 2) {
 					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
@@ -319,6 +330,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				SolidState disk = (SolidState) dropList4.getSelectedItem();
+				
+				ImageIcon ssdIcon = new ImageIcon("src/img/storage/" + disk.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(ssdIcon);
 
 				if (userChoices.size() < 3) {
 					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
@@ -360,6 +374,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				Memory memory = (Memory) dropList5.getSelectedItem();
+				
+				ImageIcon memoryIcon = new ImageIcon("src/img/ram/" + memory.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(memoryIcon);
 
 				if (userChoices.size() < 4) {
 					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
@@ -397,6 +414,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				GraphicsCard gpu = (GraphicsCard) dropList6.getSelectedItem();
+				
+				ImageIcon gpuIcon = new ImageIcon("src/img/gpu/" + gpu.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(gpuIcon);
 
 				if (userChoices.size() < 5) {
 					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
@@ -461,6 +481,9 @@ public class ComponentSelection extends JFrame {
 				compInformation.setVisible(true);
 
 				Case compCase = (Case) dropList7.getSelectedItem();
+				
+				ImageIcon caseIcon = new ImageIcon("src/img/case/" + compCase.getBrand().toLowerCase() + ".png");
+				compIcon.setIcon(caseIcon);
 
 				if (userChoices.size() < 6) {
 					JOptionPane.showMessageDialog(contentPane, "Please select previous components first!", "Warning",
@@ -487,7 +510,6 @@ public class ComponentSelection extends JFrame {
 						while (!tempChoices.isEmpty()) {
 							userChoices.push(tempChoices.pop());
 						}
-						System.out.println("Wrong case: " + userChoices.toString());
 						JOptionPane.showMessageDialog(contentPane, "Case's PSU is not enough!", "Warning",
 								JOptionPane.WARNING_MESSAGE);
 						dropList7.setSelectedIndex(-1);
@@ -521,7 +543,7 @@ public class ComponentSelection extends JFrame {
 			}
 		});
 		nextButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		nextButton.setBounds(490, 367, 85, 21);
+		nextButton.setBounds(490, 387, 85, 21);
 		contentPane.add(nextButton);
 
 	}

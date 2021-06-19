@@ -37,7 +37,7 @@ public class DeleteCompFrame extends JFrame {
 		contentPane.add(compTypeLabel);
 
 		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(200, 27, 239, 29);
+		comboBox.setBounds(200, 26, 239, 29);
 		contentPane.add(comboBox);
 
 		for (String entry : AdminPanel.computerDB.getDatabase().keySet()) {
@@ -409,7 +409,7 @@ public class DeleteCompFrame extends JFrame {
 				}
 			}
 		});
-		removeButton.setBounds(491, 28, 161, 35);
+		removeButton.setBounds(491, 23, 161, 35);
 		contentPane.add(removeButton);
 
 	}
