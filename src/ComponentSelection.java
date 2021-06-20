@@ -335,6 +335,21 @@ public class ComponentSelection extends JFrame {
 					dropList4.setSelectedIndex(-1);
 					compInformation.setVisible(false);
 				}
+				
+				else if(mBoard.isM2Support() != true && disk.getType().equals("M.2")) {
+					Object tempElement = userChoices.pop();
+					try {
+						SolidState tempSSD = (SolidState) tempElement;
+						tempSSD = null;
+					} catch (Exception e) {
+						userChoices.push(tempElement);
+					}
+					
+					JOptionPane.showMessageDialog(contentPane, "Motherboard you have chosen does not have M.2 support!", "Warning",
+							JOptionPane.WARNING_MESSAGE);
+					dropList4.setSelectedIndex(-1);
+					compInformation.setVisible(false);
+				}
 
 				else {
 					while (userChoices.size() != 3) {
