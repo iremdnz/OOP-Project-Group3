@@ -3,8 +3,6 @@ import java.util.ArrayList;
 
 public class GamingPC extends Computer implements PCPreference {
 
-	private ArrayList<Object> gamingMB, gamingCPU, gamingGPU, gamingCase;
-
 	public GamingPC() {
 		super();
 		separateGPU();

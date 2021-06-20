@@ -2,8 +2,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class ProductivityPC extends Computer implements PCPreference {
-
-	private ArrayList<Object> productvitiyMB, productvitiyCPU, productvitiyGPU, productvitiyCase;
 	
 	public ProductivityPC() {
 		super();
