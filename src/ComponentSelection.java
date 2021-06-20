@@ -8,18 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.Image;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Stack;
 
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -160,7 +155,7 @@ public class ComponentSelection extends JFrame {
 
 				Processor cpu = (Processor) dropList1.getSelectedItem();
 				
-				ImageIcon cpuIcon = new ImageIcon("src/img/cpu/" + cpu.getBrand().toLowerCase() + ".png");
+				ImageIcon cpuIcon = new ImageIcon("src/img/cpu/" + getFileName(cpu.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(cpuIcon);
 
 				while (!userChoices.isEmpty()) {
@@ -217,7 +212,7 @@ public class ComponentSelection extends JFrame {
 				}
 				else {
 					JOptionPane.showMessageDialog(contentPane,
-							"Selected processor is incompatible with motherboard!", "Warning",
+							"Selected processor has incompatible socket type with motherboard!", "Warning",
 							JOptionPane.WARNING_MESSAGE);
 					dropList1.setSelectedIndex(-1);
 					compInformation.setVisible(false);
@@ -231,7 +226,7 @@ public class ComponentSelection extends JFrame {
 
 				MotherBoard mb = (MotherBoard) dropList2.getSelectedItem();
 				
-				ImageIcon mbIcon = new ImageIcon("src/img/mb/" + mb.getBrand().toLowerCase() + ".png");
+				ImageIcon mbIcon = new ImageIcon("src/img/mb/" + getFileName(mb.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(mbIcon);
 
 				if (userChoices.size() < 1) {
@@ -262,7 +257,7 @@ public class ComponentSelection extends JFrame {
 					} else {
 						mBoard = null;
 						JOptionPane.showMessageDialog(contentPane,
-								"Selected motherboard is incompatible with processor!", "Warning",
+								"Selected motherboard has incompatible socket type with processor!", "Warning",
 								JOptionPane.WARNING_MESSAGE);
 						dropList2.setSelectedIndex(-1);
 						compInformation.setVisible(false);
@@ -289,7 +284,7 @@ public class ComponentSelection extends JFrame {
 
 				HardDrive disk = (HardDrive) dropList3.getSelectedItem();
 				
-				ImageIcon hddIcon = new ImageIcon("src/img/storage/" + disk.getBrand().toLowerCase() + ".png");
+				ImageIcon hddIcon = new ImageIcon("src/img/storage/" + getFileName(disk.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(hddIcon);
 
 				if (userChoices.size() < 2) {
@@ -331,7 +326,7 @@ public class ComponentSelection extends JFrame {
 
 				SolidState disk = (SolidState) dropList4.getSelectedItem();
 				
-				ImageIcon ssdIcon = new ImageIcon("src/img/storage/" + disk.getBrand().toLowerCase() + ".png");
+				ImageIcon ssdIcon = new ImageIcon("src/img/storage/" + getFileName(disk.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(ssdIcon);
 
 				if (userChoices.size() < 3) {
@@ -375,7 +370,7 @@ public class ComponentSelection extends JFrame {
 
 				Memory memory = (Memory) dropList5.getSelectedItem();
 				
-				ImageIcon memoryIcon = new ImageIcon("src/img/ram/" + memory.getBrand().toLowerCase() + ".png");
+				ImageIcon memoryIcon = new ImageIcon("src/img/ram/" + getFileName(memory.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(memoryIcon);
 
 				if (userChoices.size() < 4) {
@@ -415,7 +410,7 @@ public class ComponentSelection extends JFrame {
 
 				GraphicsCard gpu = (GraphicsCard) dropList6.getSelectedItem();
 				
-				ImageIcon gpuIcon = new ImageIcon("src/img/gpu/" + gpu.getBrand().toLowerCase() + ".png");
+				ImageIcon gpuIcon = new ImageIcon("src/img/gpu/" + getFileName(gpu.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(gpuIcon);
 
 				if (userChoices.size() < 5) {
@@ -482,7 +477,7 @@ public class ComponentSelection extends JFrame {
 
 				Case compCase = (Case) dropList7.getSelectedItem();
 				
-				ImageIcon caseIcon = new ImageIcon("src/img/case/" + compCase.getBrand().toLowerCase() + ".png");
+				ImageIcon caseIcon = new ImageIcon("src/img/case/" + getFileName(compCase.getBrand().toLowerCase()) + ".png");
 				compIcon.setIcon(caseIcon);
 
 				if (userChoices.size() < 6) {
@@ -547,4 +542,14 @@ public class ComponentSelection extends JFrame {
 		contentPane.add(nextButton);
 
 	}
+
+	private String getFileName(String compName) {
+		for (int i = 0; i < compName.length(); i++) {
+			if (compName.charAt(i) == 305) {
+				compName = compName.replace((char)305, 'i');
+			}
+		}
+		return compName;
+	}
 }
+
